@@ -17,6 +17,8 @@ public class Area {
 	 * @throws ArithmeticException
 	 */
 	public static double triangle(double height,double width) throws ArithmeticException {
+		if(width<0 || height<0)
+			throw new ArithmeticException("No negative length allowed");
 		return width*height*0.5;
 	}
 	
@@ -27,6 +29,8 @@ public class Area {
 	 * @throws ArithmeticException
 	 */
 	public static double rectangle(double height,double width) throws ArithmeticException {
+		if(width<0 || height<0)
+			throw new ArithmeticException("No negative length allowed");
 		return width*height;
 	}
 	
@@ -36,6 +40,8 @@ public class Area {
 	 * @throws ArithmeticException
 	 */
 	public static double square(double width) throws ArithmeticException {
+		if(width<0)
+			throw new ArithmeticException("No negative length allowed");
 		return width*width;
 	}
 	
@@ -45,14 +51,21 @@ public class Area {
 	 * @throws ArithmeticException
 	 */
 	public static double circle(double radius) throws ArithmeticException {
+		if(radius<0)
+			throw new ArithmeticException("No negative length allowed");
 		return PI*radius*radius;
 	}
 	
 	public static void main(String[] args) {
+		try {
 	      System.out.println("Area of triangle: "+ Area.triangle(3,4));
 	      System.out.println("Area of rectangle: "+ Area.rectangle(3,4));
 	      System.out.println("Area of square: "+ Area.square(3.5));
 	      System.out.println("Area of circle: "+ Area.circle(6));
+	      }
+		catch(ArithmeticException a) {
+			System.out.println(a.getMessage());
+		}
 	}
 
 }
