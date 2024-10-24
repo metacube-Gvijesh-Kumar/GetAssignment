@@ -16,7 +16,7 @@ import assignment3.ArrOperation;
 public class Test3 {
    
 	public static Stream<Arguments> mirrorArguments() { 
-		// source of test case for the 
+		// source of test case for the test method testMirror
         Stream<Arguments> args = Stream.of(	
             Arguments.of((Object)new int [] {1, 2, 3, 8, 9, 3, 2, 1},3),
             Arguments.of((Object)new int [] {7, 1, 4, 9, 7, 4, 1},2),
@@ -26,9 +26,13 @@ public class Test3 {
         return args;
     }
     
+	/**
+	 * largestMirrorSection test method 
+	 * @param x test array to be passed to the largestMirrorSection
+	 * @param ans the expected result for test array x from the method
+	 */
     @ParameterizedTest
     @MethodSource(value = "mirrorArguments")
-    
 	public void testMirror(int [] x,int ans) {
     	ArrOperation a =  new ArrOperation();
     	int result = a.largestMirrorSection(x); 
@@ -37,6 +41,7 @@ public class Test3 {
 	
     
     public static Stream<Arguments> clumpArguments() {
+    	// source of test case for the test method testClump
         Stream<Arguments> args = Stream.of(	
             Arguments.of((Object)new int [] {1,2,1,1,2,3,4,4,1},2),
             Arguments.of((Object)new int [] {7,1,1,4,9,17,17,4,4,1},3),
@@ -45,6 +50,11 @@ public class Test3 {
         );
         return args;
     }
+    
+    /**
+     * @param x test array for the method noOfClumps
+     * @param ans the expected result for test array x from the method
+     */
     
     @ParameterizedTest
     @MethodSource(value = "clumpArguments")
@@ -56,6 +66,7 @@ public class Test3 {
 	}
     
     public static Stream<Arguments> fixXYArguments() {
+    	// source of test case for the test method testfixXY
         Stream<Arguments> args = Stream.of(	
             Arguments.of((Object)new int [] {1,2,1,4,2,3,2,4,1},2,1),
             Arguments.of((Object)new int [] {7,1,1,4,9,17,17,4,4,1},4,1),
@@ -73,9 +84,9 @@ public class Test3 {
     	ArrOperation a =  new ArrOperation();
     	int[] result = a.fixXY(arr,x,y); 
     	
-    	for(int i=0;i<result.length;i++){
+    	for(int i=0;i<result.length;i++){             //traverse through the result to validate
     		if(result[i]==x) {
-    			if(i==result.length || result[i+1]!=y)
+    			if(i==result.length || result[i+1]!=y)//y should occur after x 
     				assertEquals(1,2);
     		}
     	}
@@ -83,6 +94,7 @@ public class Test3 {
 	}
 	
     public static Stream<Arguments> splitArrayArguments() {
+    	// source of test case for the test method noOfClumps
         Stream<Arguments> args = Stream.of(	
             Arguments.of((Object)new int [] {1,2,1,4,2,3,2,4,1}),
             Arguments.of((Object)new int [] {7,1,1,4,9,17,17,4,4,1}),
@@ -103,7 +115,7 @@ public class Test3 {
     	
     	
     	if(result==-1) {
-    		System.out.println(result);
+    		System.out.println("no split exist");
     		return;
     	}
     		
@@ -111,7 +123,8 @@ public class Test3 {
     	int lsum =0;
     	int rsum =0;
     	
-    	for(int i=0;i<arr.length;i++){    	
+    	for(int i=0;i<arr.length;i++){ 
+    		//traverse the array to find if the index does split the array and left side sum is equal to right side sum    	
     		if(i<result)
     			lsum+=arr[i];
     		else
