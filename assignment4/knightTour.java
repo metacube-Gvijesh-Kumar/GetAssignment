@@ -3,33 +3,48 @@ package assignment4;
 public class knightTour {
 
     int [][] finalBoard;
-   
-    
-    
-    
+  
     public Boolean recursivelySolve(int r,int c,int k,int n,int[][] board) {
             
         if(r<0 || c<0 || r>=n || c>=n) {
-            return false;            
+            return false;
+        }
+        
+        if(k==0){
+            
+            for(int i=0;i<n;i++) {
+                for(int j=0;j<n;j++) {
+                    finalBoard[i][j]=board[i][j];
+                }
+            }
+            
+            return true;
         }
         
         Boolean result=false;
-        int nxtr=r;
-        int nxtc=c;
         
-        if(board[nxtr][nxtc]==-1){
-            board[nxtr][nxtc]=n-k;
+        
+        if(board[r][c]==-1){
+
+            board[r][c]=n*n-k;
             k--;
-            result=recursivelySolve(nxtr,nxtc,k,n,board);
+            
+            for(int dr=-2;dr<=2;dr++){
+                for(int dc=-2;dc<=2;dc++) {
+                    if(Math.abs(dc)!=Math.abs(dr) && !(dc==0 || dr==0))
+                    result=recursivelySolve(r+dr,c+dc,k,n,board);
+                    if(result)
+                        return result;
+                }
+            }
+            
             k++;
+            board[r][c]=-1;
+            
         }
         
-        if(result)
-            return result;
-        
-        result = recursivelySolve(r,c+1,k,n,board);
-        
-        return result;
+        return result; 
+       
         
     }
     
@@ -52,14 +67,15 @@ public class knightTour {
             }
         }
         
-        Boolean ans = this.recursivelySolve(0,0,n,n,board);
-         System.out.println(ans);
+        Boolean ans = this.recursivelySolve(0,0,n*n,n,board);
+        
+         System.out.println("Does solution exist: "+ans);
     }
     
     public static void main(String[] args) {
         
         knightTour k = new knightTour();
-        int n=9;
+        int n=8;
         k.solution(n);
         
         for(int i=0;i<n;i++) {

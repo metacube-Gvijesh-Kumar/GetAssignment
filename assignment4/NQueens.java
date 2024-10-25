@@ -1,19 +1,30 @@
 package assignment4;
 import java.util.Arrays;
 
+/**
+ * contains recursive method that solves famous n queen problem 
+ * at the same time contains helper method to achieve the solution
+ * member variable's help with the 
+ */
 public class NQueens {
     
-    Boolean [] columns;
-    Boolean [] rows;
-    Boolean [] rDiagonals;
-    Boolean [] lDiagonals;
-    Boolean [][] finalBoard;
+    Boolean [] columns;      // store if there is any queen in given column 
+    Boolean [] rows;         // store if there is any queen in given row
+    Boolean [] rDiagonals;   // store if for given right tilted '\' diagonal there is any queen in the diagonal
+    Boolean [] lDiagonals;   // store if for given left tilted '/' diagonal there is any queen in the diagonal
+    Boolean [][] finalBoard; // store the final solution that is found at the end of the solution
    
-    
+    /**
+     * for given row column check if it is safe to place a diagonal 
+     * check if the place is not under attack from any side
+     * @param r row
+     * @param c column
+     * @param res 
+     * @return
+     */
+     
     public Boolean safe(int r,int c, Boolean[][] res) {
-        
-        
-        
+           
         int rDInd = rDiagonalIndFinder(r,c);
         int lDInd = lDiagonalIndFinder(r,c);
         
