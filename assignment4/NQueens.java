@@ -11,7 +11,7 @@ import java.util.Arrays;
  * for a board of size n 
  * there can be 2*(n-1)-1 diagonals containing more than one cell
  * also the right aligned diagonal of the cell can be found using the fact that 
- * for cell (r,c) if r==c then it will lie in the middle diagonal hence
+ * for cell (r,c) if r==c then it will lie in the middle diagonal
  */
 public class NQueens {
    
@@ -48,13 +48,13 @@ public class NQueens {
     
     public Boolean recursivelySolve(int r,int c,int q,int n,Boolean[][] board) {
         
-        if(q==0) {
+        if(q==0) { // all queens placed
             System.out.println("reached solution");
            
             for(int i=0;i<n;i++) {
                 for(int j=0;j<n;j++) {
-                   if(board[i][j])
-                       this.finalBoard[i][j]=board[i][j];
+                   if(board[i][j])                        
+                       this.finalBoard[i][j]=board[i][j]; // store the ans in the finalBoard
                 }
                 
             }
@@ -63,7 +63,7 @@ public class NQueens {
         }
 
         
-        if(r<0 || c<0 || r>=n || c>=n) {
+        if(r<0 || c<0 || r>=n || c>=n) { // out of bound return false
             return false;            
         }
         
@@ -71,25 +71,26 @@ public class NQueens {
             
         if(safe(r,c,board)) {
             
-            int rDInd = rDiagonalIndFinder(r,c);
-            int lDInd = lDiagonalIndFinder(r,c);
+            int rDInd = rDiagonalIndFinder(r,c); //find the right diagonal
+            int lDInd = lDiagonalIndFinder(r,c); // find the left diagonal
             
-            board[r][c]=true;
+            board[r][c]=true; // mark the queen on the board
             
-            rows[r]=true;
-            columns[c]=true;
+            rows[r]=true;     // mark the row as occupied
+            columns[c]=true;  // mark the column as occupied
             
-            if(lDInd!=-1)                
+            if(lDInd!=-1)     // make sure it is not a single cell diagonal           
                 lDiagonals[lDInd]=true;
             
-            if(rDInd!=-1)
+            if(rDInd!=-1)     // make sure it is not a single cell diagonal
                 rDiagonals[rDInd]=true;
             
-            q--;
+            q--;     // count of queen remaining decreased
             
-            result=recursivelySolve(r+1,0,q,n,board);
+            result=recursivelySolve(r+1,0,q,n,board); // place next queen in next row
             
-            q++;
+            // back tracking 
+            q++;  
             
             board[r][c]=false;
             rows[r]=false;
@@ -105,7 +106,7 @@ public class NQueens {
         if(result)
             return result;
         
-        result = recursivelySolve(r,c+1,q,n,board);
+        result = recursivelySolve(r,c+1,q,n,board); // for case where we skip placing a queen on the current cell
         
         return result;
     }
