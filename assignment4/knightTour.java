@@ -5,7 +5,7 @@ public class knightTour {
     int [][] finalBoard;
   
     public Boolean recursivelySolve(int r,int c,int k,int n,int[][] board) {
-            
+        
         if(r<0 || c<0 || r>=n || c>=n) {
             return false;
         }

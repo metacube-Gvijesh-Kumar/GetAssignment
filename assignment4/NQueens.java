@@ -5,9 +5,16 @@ import java.util.Arrays;
  * contains recursive method that solves famous n queen problem 
  * at the same time contains helper method to achieve the solution
  * member variable's help with the 
+ * 
+ * The important thing about this approach is that I use dedicate every cell to two diagonals ex
+ * right aligned \ and left aligned / 
+ * for a board of size n 
+ * there can be 2*(n-1)-1 diagonals containing more than one cell
+ * also the right aligned diagonal of the cell can be found using the fact that 
+ * for cell (r,c) if r==c then it will lie in the middle diagonal hence
  */
 public class NQueens {
-    
+   
     Boolean [] columns;      // store if there is any queen in given column 
     Boolean [] rows;         // store if there is any queen in given row
     Boolean [] rDiagonals;   // store if for given right tilted '\' diagonal there is any queen in the diagonal
@@ -20,12 +27,12 @@ public class NQueens {
      * @param r row
      * @param c column
      * @param res 
-     * @return
+     * @return true if only the requested cell is safe and not under attack by any queen
      */
      
     public Boolean safe(int r,int c, Boolean[][] res) {
            
-        int rDInd = rDiagonalIndFinder(r,c);
+        int rDInd = rDiagonalIndFinder(r,c); 
         int lDInd = lDiagonalIndFinder(r,c);
         
         if(rows[r] || columns[c])
