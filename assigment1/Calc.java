@@ -31,7 +31,7 @@ public class Calc {
  	
 	public static Integer toDecimal(String a,Integer base) {
 	    
-		if(a=="")
+		if(a=="" || base<=0)
 		 return 0;	
 		
 		Integer dec = 0;
@@ -67,7 +67,7 @@ public class Calc {
 	 * */
 	public static String decimalToGivenBase(Integer a,Integer base) {
 		
-		if(base==10 || a==0)
+		if(base==10 || a<=0)
 		  return Integer.toString(a);
 		
 		String answer = "";
@@ -144,7 +144,7 @@ public class Calc {
 		
 		if(a.length()>b.length())
 			return false;
-		else if(a.length() <b.length())
+		else if(a.length()<b.length())
 			return true;
 		
 		for(int i=0;i<a.length();i++) {

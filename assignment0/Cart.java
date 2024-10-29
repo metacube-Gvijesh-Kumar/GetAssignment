@@ -10,6 +10,9 @@ public class Cart {
      }
      
      public Boolean addToCart(Item item,Integer quantity){
+         
+         if(item==null || quantity<=0)
+             return false;
     	 
     	 if(item.isValid()==false)
      	    return false;
@@ -30,7 +33,8 @@ public class Cart {
      }
      
      public Integer displayQty(Item item){
-    	 if(item.isValid()==false)
+         
+    	 if(item==null || item.isValid()==false)
      	    return 0;
     	 
     	 // simply loop the arrayList and return item quantity if the item is found 
@@ -45,6 +49,9 @@ public class Cart {
      
      public Boolean updateQty(Item item,Integer quantity){
     	 
+         if(item==null || quantity<=0)
+             return false;
+         
     	 if(item.isValid()==false)
      	    return false;
     	 
@@ -60,7 +67,7 @@ public class Cart {
      
      public Boolean deleteItem(Item item){
     	 
-    	 if(item.isValid()==false)
+    	 if(item==null || item.isValid()==false)
     	    return false;
     	 
     	 for (CartItem c:cartItems){

@@ -12,7 +12,7 @@ import assignment3.ArrOperation;
 
 /**
  * holds test methods for the assignment 3 
- */
+ */ 
 public class Test3 {
    
 	public static Stream<Arguments> mirrorArguments() { 
@@ -20,8 +20,10 @@ public class Test3 {
         Stream<Arguments> args = Stream.of(	
             Arguments.of((Object)new int [] {1, 2, 3, 8, 9, 3, 2, 1},3),
             Arguments.of((Object)new int [] {7, 1, 4, 9, 7, 4, 1},2),
+            Arguments.of((Object)new int [] {7, 1, -4, 9, 7, -4, 1},2),
             Arguments.of((Object)new int [] {1, 2, 1, 4},3),
-            Arguments.of((Object)new int [] {1, 4, 5, 3, 5, 4, 1},7)
+            Arguments.of((Object)new int [] {1, 4, 5, 3, 5, 4, 1},7),
+            Arguments.of((Object)new int [] {-11, -84, 5, -3, 5, 4, 1},3)
         );
         return args;
     }
@@ -44,8 +46,9 @@ public class Test3 {
     	// source of test case for the test method testClump
         Stream<Arguments> args = Stream.of(	
             Arguments.of((Object)new int [] {1,2,1,1,2,3,4,4,1},2),
-            Arguments.of((Object)new int [] {7,1,1,4,9,17,17,4,4,1},3),
+            Arguments.of((Object)new int [] {7,1,1,4,9,-17,17,4,4,1},2),
             Arguments.of((Object)new int [] {1,2},0),
+            Arguments.of((Object)new int [] {1,2,-1,-1,-2},1),
             Arguments.of((Object)new int [] {1},0)
         );
         return args;
@@ -67,12 +70,14 @@ public class Test3 {
     
     public static Stream<Arguments> fixXYArguments() {
     	// source of test case for the test method testfixXY
-        Stream<Arguments> args = Stream.of(	
+        Stream<Arguments> args = Stream.of(
+            Arguments.of((Object)new int [] {9,-8,0,2,0,4,-8,2},0,2),    
             Arguments.of((Object)new int [] {1,2,1,4,2,3,2,4,1},2,1),
             Arguments.of((Object)new int [] {7,1,1,4,9,17,17,4,4,1},4,1),
             Arguments.of((Object)new int [] {1,2},1,2),
             Arguments.of((Object)new int [] {1},0,1),
-            Arguments.of((Object)new int [] {1},1,0)
+            Arguments.of((Object)new int [] {1},1,0),
+            Arguments.of((Object)new int [] {7,-1,1,4,9,-1,17,-1,17,4,4,1},4,-1)
         );
         return args;
     }
@@ -95,7 +100,9 @@ public class Test3 {
 	
     public static Stream<Arguments> splitArrayArguments() {
     	// source of test case for the test method noOfClumps
-        Stream<Arguments> args = Stream.of(	
+        Stream<Arguments> args = Stream.of(
+            Arguments.of((Object)new int [] {-450,-50,100,800,-1000,500}),    
+            Arguments.of((Object)new int [] {1,-2,1,4,2,3,2,4,1,2}),    
             Arguments.of((Object)new int [] {1,2,1,4,2,3,2,4,1}),
             Arguments.of((Object)new int [] {7,1,1,4,9,17,17,4,4,1}),
             Arguments.of((Object)new int [] {1,2}),

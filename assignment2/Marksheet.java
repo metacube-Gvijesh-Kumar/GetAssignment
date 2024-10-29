@@ -45,7 +45,7 @@ public class Marksheet {
 		while (scanner.hasNext()) {
         	
 			if(this.noOfStudents==0){
-				if(scanner.hasNextInt()) {
+				if(scanner.hasNextInt() && scanner.nextInt()>0){
 					this.noOfStudents = scanner.nextInt();
 					System.out.println("Now please enter the grades for each of them  seprerated by space not greater than 100.00 upto 2 decimal digits:");
 				}

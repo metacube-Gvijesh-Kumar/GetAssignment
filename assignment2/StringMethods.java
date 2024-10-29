@@ -9,7 +9,7 @@ public class StringMethods {
 	public Boolean equals(String a,String b) {
 		return a==b;
 	}
-	
+	 
 	/**
 	 * this methods changes the case of the alphabets 
 	 * ex small to capital , capital to small
