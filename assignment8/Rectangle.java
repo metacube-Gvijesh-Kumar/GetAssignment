@@ -1,37 +1,41 @@
-package assignment7;
+package assignment8;
 
-public class Square implements Shape{
+public class Rectangle implements Shape{
     
     Point bottomLeft;
     Point topRight;
-    float width;
+    
+    float length; // horizontal
+    float breadth;// vertical
     Point origin;
     
     // considering one of the side parallel to the x axis
     
-    Square(Point origin,float width){
+    Rectangle(Point origin,float length,float breadth){
+        
+        if(length<=0 || breadth<=0)
+            throw new IllegalArgumentException("invalid dimentions");
         
         if(origin==null)
-            throw new NullPointerException("given origin point is null");
-        
-        if(width<=0)
-            throw new IllegalArgumentException("invalid width for the square");
+            throw new NullPointerException("given origin is null");
         
         this.origin=origin;
         this.bottomLeft=new Point(origin.x,origin.y);
-        this.topRight  =new Point(origin.x+width,origin.y+width);
-        this.width=width;        
+        this.topRight  =new Point(origin.x+length,origin.y+breadth);
+        
+        this.breadth=breadth;
+        this.length=length;
     }
    
 
     @Override
     public float getArea() {
-        return width*width;
+        return length*breadth;
     }
 
     @Override
     public float getPerimeter() {
-        return 4*width;
+        return 2*(length+breadth);
     }
 
     @Override
@@ -43,7 +47,7 @@ public class Square implements Shape{
     public Boolean isPointEnclosed(Point p) {
         
         if(p==null)
-            throw new NullPointerException("given point p can't be null");
+            throw new NullPointerException("given point is null");
         
         if(p.x>=bottomLeft.x && p.x<=topRight.x && p.y>=bottomLeft.y && p.y<=topRight.y)
             return true;

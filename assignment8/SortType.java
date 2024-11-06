@@ -1,4 +1,4 @@
-package assignment7;
+package assignment8;
 
 public enum SortType {
     AREA,
