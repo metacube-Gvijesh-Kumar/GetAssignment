@@ -1,10 +1,13 @@
 package assignment8;
 
+/**
+ * represent a point in the cartesian coordinate system
+ */
 public class Point {
     float x;
     float y;
     
-    Point(int x,int y){
+    public Point(int x,int y){
         this.x=x;
         this.y=y;
     }
@@ -13,7 +16,12 @@ public class Point {
         this.x=x;
         this.y=y;
     }
-
+    
+    /**
+     * find the distance of the this point from the point p
+     * @param p
+     * @return
+     */
     public float distance(Point p){
         float distance = (float) Math.sqrt(Math.pow(Math.abs(p.x-this.x),2)+Math.pow(Math.abs(p.x-this.x),2));
         return distance;

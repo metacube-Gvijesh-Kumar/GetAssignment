@@ -42,6 +42,10 @@ public class Cell{
         this.value=value;
     }
     
+    /**
+     * this make sure that any map of the cell will only consider the row and column for the hash creation 
+     * so for the cell with same row,column with different value will also use same key in the hash map
+     */
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 31).
@@ -49,12 +53,17 @@ public class Cell{
             append(column).
             toHashCode();
     }
-
+    
+    /**
+     * this make sure any object with same row,column equivalent any other cell with same row,column
+     * without the value
+     */
     @Override
     public boolean equals(Object obj) {
         
         if (!(obj instanceof Cell))
             return false;
+        
         if (obj == this)
             return true;
 
@@ -62,6 +71,7 @@ public class Cell{
         
         if(row==c.getRow() && column==c.getColumn())
             return true;
+        
          return false;
     }
       

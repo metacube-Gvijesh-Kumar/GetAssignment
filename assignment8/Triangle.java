@@ -1,6 +1,9 @@
 package assignment8;
 
-public class Triangle implements Shape{
+/**
+*This class represent a triangle and it implement important methods of the shape class
+*/
+class Triangle implements Shape{
     
     Point leftCorner;
     Point peak;
@@ -41,7 +44,7 @@ public class Triangle implements Shape{
 
     @Override
     public Point getOrigin() {
-        return leftCorner;
+        return origin;
     }
 
     static double area(Point p1,Point p2,Point p3)
@@ -86,5 +89,10 @@ public class Triangle implements Shape{
         
         return true;
     }
-
+    
+    @Override
+    public ShapeType getShapeType() {
+        return ShapeType.TRIANGLE;
+    }
+    
 }

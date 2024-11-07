@@ -9,14 +9,18 @@ import java.util.List;
 import java.util.Map;
 
 
+/**
+ * This custom comparator class is required custom sorting using the  collection class
+ */
 class ShapeComparator implements Comparator<Shape> { 
     
     SortType st;
-    Map<Shape,LocalDateTime> shapes;
+    Map<Shape,LocalDateTime> shapes; // required for the sorting based on the time the shape was placed on the screen
     
     ShapeComparator(SortType st,Map<Shape,LocalDateTime> shapes){
         if(st==null || shapes==null)
             throw new NullPointerException("the given input can't be null");
+        this.shapes=shapes;
         this.st=st;
     }
     
@@ -29,17 +33,17 @@ class ShapeComparator implements Comparator<Shape> {
             if(s1.getArea()==s2.getArea())
                 return 0;
             else if(s1.getArea()>s2.getArea())
-                return -1;
-            else 
                 return 1;
+            else 
+                return -1;
             
         case SortType.PERIMETER:
             if(s1.getPerimeter()==s2.getPerimeter())
                 return 0;
             else if(s1.getPerimeter()>s2.getPerimeter())
-                return -1;
-            else 
                 return 1;
+            else 
+                return -1;
             
         case SortType.ORIGIN:
             
@@ -49,9 +53,9 @@ class ShapeComparator implements Comparator<Shape> {
             if(dist1==dist2)
                 return 0;
             else if(dist1>dist2)
-                return -1;
-            else 
                 return 1;
+            else 
+                return -1;
             
         case SortType.TIMESTAMP:
             
@@ -73,23 +77,35 @@ class ShapeComparator implements Comparator<Shape> {
     } 
 } 
 
+/**
+ * the screen class stores the shapes and the timestamp at which the shapes was added to the screen 
+ */
 public class Screen {
     
      Map<Shape,LocalDateTime> shapes;
      Point max;
-     List<Shape> shapeList;
-   
-     Screen(Point mx){
+     List<Shape> shapeList; 
+     
+     /**
+      * define the screen size from (0,0) to (mx) point and other initialization
+      * @param mx
+      */
+     public Screen(Point mx){
          
          if(mx.x<=0 || mx.y<=0)
              throw new IllegalArgumentException("invalid screen size");
          
          shapes= new HashMap<Shape,LocalDateTime>();
          shapeList = new ArrayList<Shape>();
+         max=mx;
          
      }
      
-     //Add a shape object to the screen at a specified location with default orientation.
+     /**
+      * Add a shape object to the screen at a specified location with default orientation.
+      * default orientation meaning one of the edge of the shape is parallel to the x axis
+      * @param s
+      */
      public void AddShape(Shape s){
 
          if(s==null)
@@ -101,6 +117,17 @@ public class Screen {
          LocalDateTime current = LocalDateTime.now();
          shapes.put(s,current);
          shapeList.add(s);
+     }
+     
+     public LocalDateTime getTimeStamp(Shape s) {
+         
+         if(s==null)
+             throw new NullPointerException("origin point can't be null");
+         
+         if(shapes.containsKey(s))
+             return shapes.get(s);
+         
+         throw new IllegalArgumentException("this shape is not part of the screen");
      }
     
      //Delete a shape object from the screen
@@ -119,13 +146,15 @@ public class Screen {
      }
      
      
-     //Delete all shape objects of a specific type
-     public void DeleteAllShapes(ShapeType s){
+     //Delete all shape objects of a specific type of shape
+     public void DeleteAllShapes(ShapeType st){
          
+         // collect the shapes to be deleted
          List<Shape> toDelete = new ArrayList<Shape>();
          
          for (Map.Entry<Shape,LocalDateTime> mapElement : shapes.entrySet()) { 
              Shape sh = mapElement.getKey();
+             if(sh.getShapeType()==st)
              toDelete.add(sh);
          }
          
@@ -135,7 +164,7 @@ public class Screen {
          }
      }
       
-     //Return the shape objects on the screen sorted in desired ascending order based on area, perimeter, timestamp or origin distance (distance of the origin of the shape from the origin of the screen). Consider various design options for this method.
+     //Return the shape objects on the screen sorted in desired descending order based on area, perimeter, timestamp or origin distance (distance of the origin of the shape from the origin of the screen). Consider various design options for this method.
      public List<Shape> sortedShapes(SortType st){
          List<Shape> res = new ArrayList<Shape>(shapeList);
          ShapeComparator scmp = new ShapeComparator(st,shapes);
@@ -146,6 +175,7 @@ public class Screen {
      //Return the list of shape objects enclosing a specified point.
      public List<Shape> enclosingShape(Point p){
          
+         //collect shapes with the point enclosed
          List<Shape>res = new ArrayList<Shape>();
          
          for(Shape s:shapeList) {

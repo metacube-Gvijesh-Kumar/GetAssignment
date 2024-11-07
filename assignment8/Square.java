@@ -1,14 +1,22 @@
 package assignment8;
 
-public class Square implements Shape{
+/**
+ * This class represent a square and it implement important methods of the shape class
+ * this uses the bottom left and top right corner of the rectangle to represent the rectangle 
+ */
+class Square implements Shape{
     
     Point bottomLeft;
     Point topRight;
     float width;
     Point origin;
     
-    // considering one of the side parallel to the x axis
-    
+    /**
+     * the square is being created on the screen with origin as the bottom left corner 
+     * considering one of the side parallel to the x axis
+     * @param origin
+     * @param width
+     */
     Square(Point origin,float width){
         
         if(origin==null)
@@ -39,6 +47,9 @@ public class Square implements Shape{
       return origin;    
     }
     
+    /**
+     * check if the point p is being enclosed inside the square
+     */
     @Override
     public Boolean isPointEnclosed(Point p) {
         
@@ -49,7 +60,11 @@ public class Square implements Shape{
             return true;
         return false;
     }
-
+    
+    /**
+     * it return true if the square lies within the boundaries of the screen ex
+     * with the rectangle of the  (0,0) and point max
+     */
     @Override
     public Boolean coordinatesWithIn(Point max) {
         
@@ -63,6 +78,11 @@ public class Square implements Shape{
             return false;
         
         return true;
+    }
+    
+    @Override
+    public ShapeType getShapeType() {
+        return ShapeType.SQUARE;
     }
         
 }

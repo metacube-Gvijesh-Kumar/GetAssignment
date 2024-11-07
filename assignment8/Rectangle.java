@@ -1,6 +1,10 @@
 package assignment8;
 
-public class Rectangle implements Shape{
+/**
+ * This class represent a rectangle and it implement important methods of the shape class
+ * this uses the bottom left and top right corner of the rectangle to represent the rectangle 
+ */
+class Rectangle implements Shape{
     
     Point bottomLeft;
     Point topRight;
@@ -9,8 +13,13 @@ public class Rectangle implements Shape{
     float breadth;// vertical
     Point origin;
     
-    // considering one of the side parallel to the x axis
-    
+    /**
+     * the rectangle is being created on the screen with origin as the bottom left corner 
+     * considering one of the side parallel to the x axis
+     * @param origin
+     * @param length
+     * @param breadth
+     */
     Rectangle(Point origin,float length,float breadth){
         
         if(length<=0 || breadth<=0)
@@ -21,6 +30,7 @@ public class Rectangle implements Shape{
         
         this.origin=origin;
         this.bottomLeft=new Point(origin.x,origin.y);
+        //calculating the top right corner using the origin and length and breadth 
         this.topRight  =new Point(origin.x+length,origin.y+breadth);
         
         this.breadth=breadth;
@@ -43,6 +53,9 @@ public class Rectangle implements Shape{
       return origin;    
     }
     
+    /**
+     * check if the point p is being enclosed inside the rectangle
+     */
     @Override
     public Boolean isPointEnclosed(Point p) {
         
@@ -53,7 +66,11 @@ public class Rectangle implements Shape{
             return true;
         return false;
     }
-
+    
+    /**
+     * it return true if the rectangle lies within the boundaries of the screen 
+     * with the rectangle of the  (0,0) and point max
+     */
     @Override
     public Boolean coordinatesWithIn(Point max) {
         
@@ -67,6 +84,11 @@ public class Rectangle implements Shape{
             return false;
         
         return true;
+    }
+    
+    @Override
+    public ShapeType getShapeType() {
+        return ShapeType.RECTANGLE;
     }
         
 }
