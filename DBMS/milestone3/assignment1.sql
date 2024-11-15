@@ -19,8 +19,14 @@ CREATE TABLE Product  (
     Name varchar(255) NOT NULL,
     Description varchar(600) DEFAULT '',
     Stock INT UNSIGNED DEFAULT 0,
-    Price INT UNSIGNED DEFAULT 0,
-	Category int NOT NULL,
+    Price INT UNSIGNED DEFAULT 0
+);
+
+CREATE TABLE Categorize(
+	Product  int NOT NULL,
+    Category int NOT NULL,
+    PRIMARY KEY(Product,Category),
+    FOREIGN KEY (Product) REFERENCES Product(ID) ON DELETE CASCADE,
     FOREIGN KEY (Category) REFERENCES Catergory(ID) ON DELETE CASCADE
 );
 
