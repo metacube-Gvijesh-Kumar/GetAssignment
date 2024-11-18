@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parking System</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+
+  <body>
+    <nav class="navBar">
+        <div class="logo">
+            <img class="logo__img containedImg" src="logo.png" alt="logo">
+        </div>
+        <ul class="navBar__list list">
+            <li class="navBar__list__item"> <a href="#AddEmployee">Add Employee</a> </li>
+            <li class="navBar__list__item"> <a href="#AddVehicle">Add vehicle</a> </li>   
+            <li class="navBar__list__item"> <a href="#Feedback">Feedback</a> </li> 
+            <li class="navBar__list__item"> <a href="#Pricing">Pricing </a> </li>
+        </ul>
+    </nav> 
+    <main>
+        <section class="section" >
+            <div class="cover">
+                <img class="containedImg cover__img" src="cover.jpg" alt="cover image">
+            </div>
+        </section>
+
+        <section class="section" id="AddEmployee">
+            <h2 class="section__heading">Add Employee</h2>
+
+            <div class="container">
+                <div class="sideContainer">
+                    <img class="sideContainer__img containedImg" src="feedback.png" alt="feed image">
+                </div>
+
+                <div class="formContainer">
+
+                        <form class="form" action="/addEmployee" method="post">
+                            <label class="form__label">
+                                Full name
+                                <input type="text" name="fullName" />
+                            </label>
+
+                            <label class="form__label">
+                                Gender
+                                <label class="form__label">
+                                    <input type="radio" name="gender" value="male" />
+                                    Male
+                                </label>
+                                <label class="form__label">
+                                    <input type="radio" name="gender" value="female"/>
+                                    Female
+                                </label>
+                                <label class="form__label">
+                                    <input type="radio" name="gender" value="others"/>
+                                    others
+                                </label>
+                            </label>
+
+                            <label class="form__label">
+                                Email
+                                <input type="email" name="email" />
+                            </label>
+
+                            <label class="form__label">
+                                Password
+                                <input type="password" name="password" />
+                            </label>
+
+                            <label class="form__label">
+                                Confirm password
+                                <input type="password" name="confirmPassword" />
+                            </label>
+
+                            <label class="form__label">
+                                Mobile
+                                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}" placeholder="123-1245-678" />
+                            </label>
+
+                            <label class="form__label">
+                                submit
+                                <input class="form__submit" type="submit"/>
+                            </label>
+                        </form>
+                   </div>
+            </div>
+        </section>
+
+        <section class="section" id="AddVehicle">
+
+            <h2 class="section__heading">Add Vehicle</h2>
+            
+            <div class="container">
+                <div class="formContainer">
+            
+                        <form class="form" action="/addVehicle" method="get">
+
+                            <label class="form__label">
+                                company
+                                <input type="text" name="company" />
+                            </label>
+
+                            <label class="form__label">
+                                Model
+                                <input type="text" name="model" />
+                            </label>
+
+                            <label class="form__label">
+                                Type
+
+                                <label class="form__label">
+                                    <input type="radio" name="type" value="car"/>
+                                    car
+                                </label>
+                                <label class="form__label">
+                                    <input type="radio" name="type" value="bike"/>
+                                    bike
+                                </label>
+                                <label class="form__label">
+                                    <input type="radio" name="type" value="others"/>
+                                    others
+                                </label>
+
+                            </label>
+
+                            <label class="form__label">
+                                Vehicle number
+                                <input type="text" name="vehicleNumber" />
+                            </label>
+
+                            <label class="form__label">
+                                Employee id
+                                <input type="text" name="employeeId" />
+                            </label>
+
+                            <label class="form__label">
+                                Identification
+                                <textarea  name="Identification" rows="4" cols="50" placeholder="how your car can de identified?">
+                                </textarea>
+                            </label>
+                            <label class="form__label">
+                            submit
+                            <input class="form__submit" type="submit"/>
+                            </label>
+                        </form>
+                </div>
+                <div class="sideContainer">
+                    <img class="sideContainer__img containedImg" src="feedback.png" alt="feed image">
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="Feedback">
+
+            <h2 class="section__heading">Feedback</h2>
+
+            <div class="container">
+                <div class="sideContainer">
+                    <img class="sideContainer__img containedImg" src="feedback.png" alt="feed image">
+                </div>
+
+                <div class="formContainer">
+                    
+                    <form class="form" action="/feedback" method="post">
+                        
+                        <label class="form__label">
+                            Rate on scale of 5
+                            <input type="number" name="rating" max=5 min="1"/>
+                        </label>
+                        
+                        <label class="form__label">
+                            Identification
+                            <textarea  name="Identification" rows="4" cols="40" placeholder="how your car can de identified?">
+                            </textarea>
+                        </label>
+                        <label class="form__label">
+                                submit
+                            <input class="form__submit" type="submit"/>
+                        </label>
+                    </form>
+                </div>
+           </div>
+            
+        </section>
+
+        <section class="section" id="Pricing">
+
+            <h2 class="section__heading">Pricing</h2>
+
+            <div class="cardContainer">
+                    <div class="card">
+
+                        <h3 class="card__heading">cycle</h3>
+
+                        <div class="card__logo">
+                            <h2>$100</h2>
+                            <p>/month</p>    
+                        </div>
+
+                        <ul class="card__list list">  
+                            <li class="card__list__item list__item"><p>$5 Daily</p></li>
+                            <li class="card__list__item list__item"><p>$100 Monthly</p></li> 
+                            <li class="card__list__item list__item"><p>$500 yearly</p></li> 
+                        </ul>
+
+                        <button class="primaryBtn" >Purchase Now</button>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card__heading">Bike</h3>
+
+                        <div class="card__logo">
+                            <h2>$100</h2>
+                            <p>/month</p>    
+                        </div>
+
+                        <ul class="card__list list">  
+                            <li class="card__list__item list__item"><p>$5 Daily</p></li>
+                            <li class="card__list__item list__item"><p>$100 Monthly</p></li> 
+                            <li class="card__list__item list__item"><p>$500 yearly</p></li> 
+                        </ul>
+
+                        <button class="primaryBtn" >Purchase Now</button>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card__heading">others</h3>
+
+                        <div class="card__logo">
+                            <h2>$100</h2>
+                            <p>/month</p>    
+                        </div>
+
+                        <ul class="card__list list">  
+                            <li class="card__list__item list__item"><p>$5 Daily</p></li>
+                            <li class="card__list__item list__item"><p>$100 Monthly</p></li> 
+                            <li class="card__list__item list__item"><p>$500 yearly</p></li> 
+                        </ul>
+
+                        <button class="primaryBtn" >Purchase Now</button>
+                    </div>
+
+            </div>
+            
+        </section>
+
+    </main>
+  </body>
+</html>
