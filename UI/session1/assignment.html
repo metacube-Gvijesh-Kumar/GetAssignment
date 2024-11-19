@@ -8,6 +8,11 @@
     <title>Parking System</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&display=swap" rel="stylesheet">
+
   </head>
 
   <body>
@@ -23,7 +28,7 @@
         </ul>
     </nav> 
     <main>
-        <section class="section" >
+        <section>
             <div class="cover">
                 <img class="containedImg cover__img" src="cover.jpg" alt="cover image">
             </div>
@@ -40,51 +45,53 @@
                 <div class="formContainer">
 
                         <form class="form" action="/addEmployee" method="post">
-                            <label class="form__label">
-                                Full name
-                                <input type="text" name="fullName" />
-                            </label>
 
-                            <label class="form__label">
-                                Gender
-                                <label class="form__label">
-                                    <input type="radio" name="gender" value="male" />
+                            <label for="fullName" class="form__label">
+                                Full name
+                            </label>
+                            <input id="fullName" class="form__input" type="text" name="fullName" />
+
+                            <label class="form__label"> Gender </label>
+                            <div role="radiogroup" class="form__radio">
+                                <label for="male" class="form__label">
+                                    <input id="male" class="form__input" type="radio" name="gender" value="male" />
                                     Male
                                 </label>
-                                <label class="form__label">
-                                    <input type="radio" name="gender" value="female"/>
+
+                                <label for="female" class="form__label">
+                                    <input id="female" class="form__input" type="radio" name="gender" value="female"/>
                                     Female
                                 </label>
-                                <label class="form__label">
-                                    <input type="radio" name="gender" value="others"/>
+
+                                <label for="otherGender" class="form__label">
+                                    <input id="otherGender" class="form__input" type="radio" name="gender" value="others"/>
                                     others
                                 </label>
-                            </label>
+                            </div>
 
-                            <label class="form__label">
+                            <label for="email" class="form__label">
                                 Email
-                                <input type="email" name="email" />
                             </label>
+                            <input id="email" class="form__input" type="email" name="email" />
 
-                            <label class="form__label">
+                            <label for="password" class="form__label">
                                 Password
-                                <input type="password" name="password" />
                             </label>
+                            <input id="password" class="form__input" type="password" name="password" />
 
-                            <label class="form__label">
+                            <label id="confirmPassword" class="form__label">
                                 Confirm password
-                                <input type="password" name="confirmPassword" />
                             </label>
+                            <input id="confirmPassword" class="form__input" type="password" name="confirmPassword" />
 
-                            <label class="form__label">
+                            <label for="mobile" class="form__label">
                                 Mobile
-                                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}" placeholder="123-1245-678" />
                             </label>
+                            <input id="mobile" class="form__input" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}" placeholder="123-1245-678" />
 
-                            <label class="form__label">
-                                submit
-                                <input class="form__submit" type="submit"/>
-                            </label>
+                            
+                            <input class="form__submit form__input" type="submit"/>
+                          
                         </form>
                    </div>
             </div>
@@ -99,53 +106,53 @@
             
                         <form class="form" action="/addVehicle" method="get">
 
-                            <label class="form__label">
+                            <label for="company" class="form__label">
                                 company
-                                <input type="text" name="company" />
                             </label>
+                            <input id="company" class="form__input" type="text" name="company" />
 
-                            <label class="form__label">
+                            <label for="model" class="form__label">
                                 Model
-                                <input type="text" name="model" />
                             </label>
+                            <input id="model" class="form__input" type="text" name="model" />
 
                             <label class="form__label">
                                 Type
-
+                            </label>
+                         
+                            <div role="radiogroup" class="form__radio">
                                 <label class="form__label">
-                                    <input type="radio" name="type" value="car"/>
+                                    <input class="form__input" type="radio" name="type" value="car"/>
                                     car
                                 </label>
                                 <label class="form__label">
-                                    <input type="radio" name="type" value="bike"/>
+                                    <input class="form__input" type="radio" name="type" value="bike"/>
                                     bike
                                 </label>
                                 <label class="form__label">
-                                    <input type="radio" name="type" value="others"/>
+                                    <input class="form__input" type="radio" name="type" value="others"/>
                                     others
                                 </label>
+                            </div>    
+                            
 
-                            </label>
-
-                            <label class="form__label">
+                            <label id="vehicleNumber" class="form__label">
                                 Vehicle number
-                                <input type="text" name="vehicleNumber" />
                             </label>
+                            <input id="vehicleNumber" class="form__input" type="text" name="vehicleNumber" />
 
-                            <label class="form__label">
+                            <label for="employeeId" class="form__label">
                                 Employee id
-                                <input type="text" name="employeeId" />
                             </label>
+                            <input id="employeeId" class="form__input" type="text" name="employeeId" />
 
-                            <label class="form__label">
+                            <label for="Identification" class="form__label">
                                 Identification
-                                <textarea  name="Identification" rows="4" cols="50" placeholder="how your car can de identified?">
-                                </textarea>
                             </label>
-                            <label class="form__label">
-                            submit
-                            <input class="form__submit" type="submit"/>
-                            </label>
+                            <textarea id="Identification" class="form__input form__textArea"  name="Identification" rows="4" cols="50" placeholder="how your car can de identified?"></textarea>
+                        
+                            <input class="form__submit form__input" type="submit"/>
+                          
                         </form>
                 </div>
                 <div class="sideContainer">
@@ -163,24 +170,21 @@
                     <img class="sideContainer__img containedImg" src="feedback.png" alt="feed image">
                 </div>
 
-                <div class="formContainer">
-                    
+                <div class="formContainer">    
                     <form class="form" action="/feedback" method="post">
                         
-                        <label class="form__label">
+                        <label for="rating" class="form__label">
                             Rate on scale of 5
-                            <input type="number" name="rating" max=5 min="1"/>
                         </label>
+                        <input id="rating" class="form__input" type="number" name="rating" max=5 min="1"/>
                         
-                        <label class="form__label">
-                            Identification
-                            <textarea  name="Identification" rows="4" cols="40" placeholder="how your car can de identified?">
-                            </textarea>
+                        <label for="feedback" class="form__label">
+                            Feedback
                         </label>
-                        <label class="form__label">
-                                submit
-                            <input class="form__submit" type="submit"/>
-                        </label>
+                        <textarea id="feedback" class="form__input form__textArea"  name="feedback" rows="4" cols="40" placeholder="describe your experience..."></textarea>
+                       
+                        <input class="form__submit form__input" type="submit"/>
+                     
                     </form>
                 </div>
            </div>
@@ -194,7 +198,7 @@
             <div class="cardContainer">
                     <div class="card">
 
-                        <h3 class="card__heading">cycle</h3>
+                        <h3 class="card__heading">Car</h3>
 
                         <div class="card__logo">
                             <h2>$100</h2>

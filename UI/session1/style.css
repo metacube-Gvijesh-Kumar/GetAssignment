@@ -3,6 +3,9 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Edu AU VIC WA NT Pre", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 
@@ -12,7 +15,7 @@ background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 }
 
 .logo{
-    width:70px;
+    width:50px;
 }
 
 
@@ -27,19 +30,22 @@ background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 }
 
 .navBar{
-    padding: 10px;
+    padding: 5px;
     display: flex;
     justify-content: space-between;
-}
-
-.list{
-    list-style: none;
+    background-color: white;
+    width: 100%;
+    position: fixed;
 }
 
 .navBar__list{
     display: flex;
     gap: 30px;
     align-items: center;
+}
+
+.list{
+    list-style: none;
 }
 
 a{
@@ -51,7 +57,7 @@ a{
 .section__heading{
     margin: auto;   
     width:fit-content;
-    color: rgb(204, 66, 206);
+    color: #6f6d6d;
     padding: 30px;
 }
 
@@ -61,6 +67,7 @@ a{
     gap: 50px;
     padding: 20px;
     justify-content:space-around;
+    align-items: center;
 }
 
 .sideContainer{
@@ -68,17 +75,47 @@ a{
 }
 
 .form{
-    display: flex;
-    flex-direction:column;
-    gap: 30px; 
+    padding: 20px;
+    padding-block: 50px;
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px; 
     align-items: center;
-    justify-content: center;
+    background-color:#dadedb;
+    -webkit-box-shadow: 7px 15px 42px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 15px 42px 0px rgba(0,0,0,0.75);
+    box-shadow: 7px 15px 42px 0px rgba(0,0,0,0.75);   
 }
 
 .form__label{
-    display: inline-block;
-    width:200px;
-    text-align: center;
+    text-align: end;
+    
+}
+
+.form__input{
+    border-radius: 10px;
+    padding: 5px;
+    min-width: 100px;
+}
+
+.form__radio{
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+.form__submit{
+    grid-column: 1 / 3;
+    width: 100px;
+    justify-self:flex-end;
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    font-family: Courier New;
+    color: #929090;
+    background: #ffffff;
+    padding: 10px 20px 10px 20px;
 }
 
 .cardContainer{
@@ -94,19 +131,51 @@ a{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    justify-content: center;    
-    border:5px solid #107deb;
+    justify-content: center;
+    align-items: center;    
     padding: 50px;
+    background-color: white;
     -webkit-box-shadow: -5px 8px 18px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: -5px 8px 18px 0px rgba(0,0,0,0.75);
     box-shadow: -5px 8px 18px 0px rgba(0,0,0,0.75);
+    border-radius: 20px;
+    min-width: 250px;
 }
 
 .card__logo{
     border-radius:50%;
     width: 100px;
     height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;  
     border:5px solid #107deb;
     text-align: center;
-    padding: auto;
+    padding: 60px;
+}
+
+.card__list__item{
+    text-align: center;
+}
+
+.section{
+    padding: 50px;
+    margin: 100px;
+    background-color:#84eabc;
+    border-radius: 25px;
+    -webkit-box-shadow: -9px 12px 50px 0px rgba(120,119,120,1);
+    -moz-box-shadow: -9px 12px 50px 0px rgba(120,119,120,1);
+    box-shadow: -9px 12px 50px 0px rgba(120,119,120,1);
+}
+
+.primaryBtn{
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    font-family: Courier New;
+    color: #080808;
+    background: #ffffff;
+    padding: 10px 20px 10px 20px;
 }
