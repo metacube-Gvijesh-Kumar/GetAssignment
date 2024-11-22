@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather App</title>
+    
+    <!-- roboto font -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- font awesome -->
+    <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/> -->
+    <script src="https://kit.fontawesome.com/d3bc91c886.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+    <header class="home">
+      <nav class="nav-bar flex-row">
+        <h4>LOGO TITLE</h4>
+        
+        <ul class="flex-row list nav-bar__list">
+          <li><a class="nav-bar__links" href="#home">Home</a> </li>
+          <li><a class="nav-bar__links" href="#features">Features</a> </li>   
+          <li><a class="nav-bar__links" href="#reviews">Reviews</a> </li> 
+          <li><a class="nav-bar__links" href="#download">Download</a> </li>
+        </ul>
+        
+        <ul class="flex-row list nav-bar__list">
+          <li class="nav-bar__links"><i class="fa-brands fa-facebook-f"></i></li>
+          <li class="nav-bar__links"><i class="fa-brands fa-instagram"></i></li>   
+          <li class="nav-bar__links"><i class="fa-brands fa-google-plus-g"></i></li> 
+        </ul>  
+      </nav>
+
+      <div class="banner flex-row">
+
+        <div class="banner__left flex-col">
+          <h1 class="banner__heading">Get the most fun weather app</h1> 
+          <div class="flex-row left-justify banner__btns">
+            <button class="banner__btn btns__dn">Download</button>
+            <button class="banner__btn btns__ft">Features</button>
+          </div>
+        </div>
+        
+        <div class="banner__image"> 
+          <img class="contained-img" src="./images/phone1.png" alt="phone1">
+        </div>
+      </div>
+    </header>
+
+    <section id="features">
+
+            <h3 class="features__heading">Perfect Features</h3>
+            <h5 class="features__sub-heading">Only necessary</h5>
+
+            <div class="flex-row features__container">
+
+                <div class="flex-row feature">
+                  <i class="fa-solid fa-gem fa-3x feature-icon"></i>
+                  <div class="feature-container">
+                    <h4 class="feature-heading">Usability</h4>
+                    <p  class="feature-desc">some times the simplest things are the hardest to find so we created a new line for everyday life</p>
+                  </div>
+                </div>
+
+                <div class="flex-row feature">
+                  <i class="fa-solid fa-layer-group fa-3x feature-icon"></i>
+                  <div class="feature-container">
+                    <h4 class="feature-heading">Parallax Effect</h4>
+                    <p  class="feature-desc">some times the simplest things are the hardest to find so we created a new line for everyday life</p>
+                  </div>
+                </div>
+
+                <div class="flex-row feature">
+                  <i class="fa-solid fa-fire fa-3x feature-icon"></i>
+                  <div class="feature-container">
+                    <h4 class="feature-heading">Unlimited colors</h4>
+                    <p  class="feature-desc">some times the simplest things are the hardest to find so we created a new line for everyday life</p>
+                  </div>
+                </div>
+                
+            </div>
+
+            <div class="carousel">
+              <img class="contained-img" src="./images/test1.png" alt="carousel">
+            </div>
+
+            <h3 class="features__heading">Screenshots</h3>
+            <h5 class="features__sub-heading">The brightest images</h5>
+            
+            <div class="flex-row mobile">
+              <div class="mobile-screen">
+                <img class="mobile-screen__img" src="./images/screen01.png" alt="mobile1">
+                <p class="mobile-bg-text">Cloudy</p>
+                <div class="mobile__screen__balls mobile-screen__weather">cloudy</div>
+                <div class="mobile__screen__balls mobile-screen__temp">9*</div>
+              </div>
+              
+              <div class="flex-col mobile-container">
+                <div class="mobile-icon">
+                  <img class="contained-img" src="./images/cloud1.png" alt="rainy1">
+                </div>
+                <h3 class="mobile-heading">when the clouds</h3>
+                <p  class="mobile-desc">some times the simplest things are the hardest to find so we created a new line for everyday life</p>
+                <div class="flex-row circles">
+                  <div class="circle c1">95%</div>
+                  <div class="circle c2">9*</div>
+                  <div class="circle c3">Rainy</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-row mobile">
+
+              <div class="flex-col mobile-container">
+                <div class="mobile-icon">
+                  <img class="contained-img" src="./images/sun1.png" alt="rainy1">
+                </div>
+                <h3 class="mobile-heading">when the clouds</h3>
+                <p  class="mobile-desc">some times the simplest things are the hardest to find so we created a new line for everyday life</p>
+                <div class="flex-row circles">
+                  <div class="circle c1">95%</div>
+                  <div class="circle c2">9*</div>
+                  <div class="circle c3">Rainy</div>
+                </div>
+              </div>
+
+              <div class="mobile-screen">
+                <img class="mobile-screen__img" src="./images/screen02.png" alt="mobile1">
+                <p class="mobile-bg-text">sunny</p>
+                <div class="mobile__screen__balls mobile-screen__weather">sunny</div>
+                <div class="mobile__screen__balls mobile-screen__temp">9*</div>
+              </div>
+              
+            </div>
+
+            <div class="flex-row mobile">
+              <div class="mobile-screen">
+                <img class="mobile-screen__img" src="./images/screen03.png" alt="mobile1">
+                <p class="mobile-bg-text">Rainy</p>
+                <div class="mobile__screen__balls mobile-screen__weather">Rainy</div>
+                <div class="mobile__screen__balls mobile-screen__temp">9*</div>
+              </div>
+              
+              <div class="flex-col mobile-container">
+                <div class="mobile-icon">
+                  <img class="contained-img" src="./images/rainy1.png" alt="rainy1">
+                </div>
+                <h3 class="mobile-heading">when the rain</h3>
+                <p  class="mobile-desc">some times the simplest things are the hardest to find so we created a new line for everyday life</p>
+                <div class="flex-row circles">
+                  <div class="circle c1">95%</div>
+                  <div class="circle c2">9*</div>
+                  <div class="circle c3">Rainy</div>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="features__heading">What reviews are saying</h3>
+            <h5 class="features__sub-heading">Reviews</h5>
+
+            <div class="reviews"> 
+
+              <div class="review">
+                <i class="fa-brands fa--f"></i>
+                <p class="review__quote qstart">"</p>
+                <p class="review__text">what art offers is space - a certain breathing room for the spirit</p>
+                <p class="review__author">John updike</p>
+                <p class="review__quote qend">"</p>
+              </div>
+              
+              <div class="review">
+                <p class="review__quote qstart">"</p>
+                <p class="review__text">what art offers is space - a certain breathing room for the spirit</p>
+                <p class="review__author">John updike</p>
+                <p class="review__quote qend">"</p>
+              </div>
+              
+              <div class="review">
+                <p class="review__quote qstart">"</p>
+                <p class="review__text">what art offers is space - a certain breathing room for the spirit</p>
+                <p class="review__author">John updike</p>
+                <p class="review__quote qend">"</p>
+              </div>
+              
+              <div class="review">
+                <p class="review__quote qstart">"</p>
+                <p class="review__text">what art offers is space - a certain breathing room for the spirit</p>
+                <p class="review__author">John updike</p>
+                <p class="review__quote qend">"</p>
+              </div>
+
+            </div> 
+    </section>
+
+    <section id="app" class="flex-row">
+      <div class="flex-col app__instruction">
+        <h2>How Download The App? </h2>
+        <p>just download the app from the store.Simple,nice user friendly application of the weather.only relevant and useful information</p>
+        <div class="flex-row stores">
+          <div class="app-store">
+            <img class="contained-img" src="./images/appstor.png" alt="app store">
+          </div>
+          <div class="play-store">
+            <img class="contained-img" src="./images/googleplay.png" alt="play store">
+          </div>
+        </div>
+      </div>
+      <div class="app__screen">
+        <img class="contained-img" src="./images/appdownload1.png" alt="">
+      </div>
+    </section>
+
+    <footer class="footer">
+      <nav class="nav-bar flex-row">
+        <h4>LOGO TITLE</h4>
+        
+        <ul class="flex-row list nav-bar__list">
+          <li><a class="nav-bar__links" href="#home">Home</a> </li>
+          <li><a class="nav-bar__links" href="#features">Features</a> </li>   
+          <li><a class="nav-bar__links" href="#reviews">Reviews</a> </li> 
+          <li><a class="nav-bar__links" href="#download">Download</a> </li>
+        </ul>
+        
+        <ul class="flex-row list nav-bar__list">
+          <li class="nav-bar__links"><i class="fa-brands fa-facebook-f"></i></li>
+          <li class="nav-bar__links"><i class="fa-brands fa-instagram"></i></li>   
+          <li class="nav-bar__links"><i class="fa-brands fa-google-plus-g"></i></li> 
+        </ul>  
+      </nav>
+
+      <div class="end-line"></div>
+
+      <p class="rights">All Rights Reserved</p>
+
+    </footer>
+
+
+  </body>
+</html>

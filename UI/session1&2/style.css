@@ -10,14 +10,22 @@
 
 
 body{
-background-color: #8EC5FC;
-background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+background-color: #107deb;
+background-image: linear-gradient(62deg,#b8d4ef 0%, #5ea3e9 100%);
 }
 
 .logo{
     width:50px;
 }
 
+.logo__img{
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
 .containedImg{
    width: 100%;
@@ -36,6 +44,7 @@ background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
     background-color: white;
     width: 100%;
     position: fixed;
+    border-bottom: 1px solid lightgray;
 }
 
 .navBar__list{
@@ -50,7 +59,8 @@ background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 
 a{
   text-decoration: none;
-  color: rgb(204, 66, 206);
+  /* color: rgb(204, 66, 206); */
+  color: #6f6d6d;
   font-weight: 600;
 }
 
@@ -158,7 +168,8 @@ a{
 .section{
     padding: 50px;
     margin: 100px;
-    background-color:#84eabc;
+    /* background-color:#84eabc; */
+    background-color: white;
     border-radius: 25px;
     -webkit-box-shadow: -9px 12px 50px 0px rgba(120,119,120,1);
     -moz-box-shadow: -9px 12px 50px 0px rgba(120,119,120,1);
