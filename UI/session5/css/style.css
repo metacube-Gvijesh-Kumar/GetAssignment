@@ -1,0 +1,116 @@
+*{
+    --navbar-item-color:#6c757d;
+    --navbar-search-bg:#f0f3f8;
+    --navbar-profile-bg:#fafafd;
+    --sideBar-bg:#313a46;
+}
+
+.nav-icon{
+    color: var(--navbar-item-color);
+}
+
+.nav-profile{
+    background-color: var(--navbar-profile-bg);
+}
+
+.custom-search{
+    background-color:var(--navbar-search-bg);   
+    color: var(--navbar-item-color); 
+}
+
+form.custom-search > input{
+    color: var(--navbar-item-color);
+}
+
+form.custom-search > input:focus{
+    border: none;
+    outline: none;
+}
+
+form.custom-search > input::placeholder{
+    color: gray;
+}
+
+
+.custom-fill-btn{
+    background-color: #727cf5;
+    color: white;
+}
+
+.arrow-none{
+    text-decoration: none;
+    color: var(--navbar-item-color);
+}
+
+.arrow-none::after{
+    display: none !important;
+}
+
+
+
+#sideNavCollapse[data-expanded="true"] #smaller-logo,#sideNavCollapse[data-expanded="false"] #larger-logo{
+    display:none;
+}
+
+#sideNavCollapse[data-expanded="false"] .sideNav-section p,#sideNavCollapse[data-expanded="false"] .sideNav-section .side-drop-icon{
+    display: none;
+}
+
+#sideNavCollapse[data-expanded="true"] #sideNav{
+    padding: 2.5rem;
+}
+
+#sideNavCollapse[data-expanded="false"] #sideNav{
+    padding: 1rem;
+}
+
+#sideNavCollapse[data-expanded="false"] .side-icon-link{
+    margin: auto;
+}
+
+
+/* .layouter{
+    display: grid;
+    grid-template-columns:auto 1fr;
+    grid-template-rows:auto 1fr;
+    grid-template-areas: 
+    "sidenav nav"
+    "sidenav container";
+    align-items: flex-start;
+    justify-content: flex-start;
+} */
+
+#sideNav{
+    width:fit-content;
+    background-color: var(--sideBar-bg);
+    color: rgb(131, 145, 162);
+}
+
+#topNavWrapper{
+    position: fixed;
+    width: 100%; 
+}
+
+#sideBarWrapper{
+    width: fit-content;
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+#sideNavCollapse{
+
+}
+
+.custom-nav{
+    color: var(--navbar-item-color);
+    background-color: white;
+}
+
+
+.dashboard{
+    height:1000px;
+    width: 600px;
+    background-color: red;
+}
