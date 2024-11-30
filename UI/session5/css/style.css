@@ -1,8 +1,10 @@
-*{
+:root{
     --navbar-item-color:#6c757d;
     --navbar-search-bg:#f0f3f8;
     --navbar-profile-bg:#fafafd;
     --sideBar-bg:#313a46;
+    --sideBar-width:300px;
+    --topBar-height:80px;
 }
 
 .nav-icon{
@@ -69,7 +71,7 @@ form.custom-search > input::placeholder{
 }
 
 
-/* .layouter{
+.layouter{
     display: grid;
     grid-template-columns:auto 1fr;
     grid-template-rows:auto 1fr;
@@ -78,7 +80,11 @@ form.custom-search > input::placeholder{
     "sidenav container";
     align-items: flex-start;
     justify-content: flex-start;
-} */
+
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+}
 
 #sideNav{
     width:fit-content;
@@ -86,31 +92,33 @@ form.custom-search > input::placeholder{
     color: rgb(131, 145, 162);
 }
 
-#topNavWrapper{
-    position: fixed;
-    width: 100%; 
-}
-
-#sideBarWrapper{
-    width: fit-content;
-    position: fixed;
-    top: 0;
-    height: 100vh;
-    overflow-y: scroll;
-}
-
 #sideNavCollapse{
-
+    grid-row: 1/3;
+    grid-column: 1/2;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .custom-nav{
     color: var(--navbar-item-color);
     background-color: white;
+    grid-row: 1/2;
+    grid-column: 2/3;
+    height:80px;
 }
 
-
 .dashboard{
-    height:1000px;
-    width: 600px;
+    grid-row: 2/3;
+    grid-column: 2/3;
+    height:100%;
+    width:100%;
+    overflow-y: scroll;
+}
+
+.contentDiv{
+    display:block;
     background-color: red;
+    height: 2000px;
+    width: 500px;
+    margin-top: 20px;
 }
