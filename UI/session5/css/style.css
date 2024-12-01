@@ -3,8 +3,9 @@
     --navbar-search-bg:#f0f3f8;
     --navbar-profile-bg:#fafafd;
     --sideBar-bg:#313a46;
-    --sideBar-width:300px;
-    --topBar-height:80px;
+    --border-color:rgb(233, 236, 239);
+    --link-color:rgb(97,105,208);
+    --danger-color:rgb(250,92,124);
 }
 
 .nav-icon{
@@ -70,6 +71,22 @@ form.custom-search > input::placeholder{
     margin: auto;
 }
 
+#sideNavCollapse::-webkit-scrollbar {
+    width: 5px;
+    opacity:20%;
+}
+
+#sideNavCollapse::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,1);
+    border-radius: 10px;
+}
+
+#sideNavCollapse::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color:rgb(227, 225, 225);
+    -webkit-box-shadow: inset 0 0 6px rgba(90,90,90,0.7);
+}
+ 
 
 .layouter{
     display: grid;
@@ -113,6 +130,7 @@ form.custom-search > input::placeholder{
     height:100%;
     width:100%;
     overflow-y: scroll;
+    background-color: var(--navbar-search-bg);
 }
 
 .contentDiv{
@@ -121,4 +139,37 @@ form.custom-search > input::placeholder{
     height: 2000px;
     width: 500px;
     margin-top: 20px;
+}
+
+.project-icon{
+    font-size: 1.50rem;
+    -webkit-text-stroke:0.5px;
+    color: var(--navbar-item-color);
+}
+
+.projects{
+    color: var(--navbar-item-color);
+}
+
+.green-arrow{
+    color: rgb(10, 207, 151);
+}
+
+.inprogress-arrow{
+    color:var(--link-color);
+}
+
+.behind-arrow{
+    color:var(--danger-color);
+}
+
+.custom-card{
+    border:0.01rem solid var(--border-color);
+    box-shadow: (154, 161, 171, 0.15) 0px 0px 35px 0px;
+    background-color: white;
+}
+
+.bread-crumb   a{
+    text-decoration: none;
+    color: var(--link-color);
 }

@@ -16,33 +16,36 @@
         tg.setAttribute('aria-expanded','true');
         sideNavCollapse.setAttribute('data-expanded',"true");
     }
-
-    // var sideBarWidth=sideNavCollapse.offsetWidth;
-    // console.log(sideBarWidth);
-    // const r = document.querySelector(':root');
-    // r.style.setProperty('--sideBar-width',sideBarWidth);
-
  })
 
+ function addPieChart(){
 
- window.onload = function () {
-    var chart = new CanvasJS.Chart("chartContainer",
-        {
+  const ctx = document.getElementById('pieChart');
+   
+  const data = {
+    labels: [
+      'Red',
+      'Blue',
+      'Yellow'
+    ],
+    datasets: [{
+      label: 'My First Dataset',
+      data: [300, 50, 100],
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)'
+      ],
+      hoverOffset: 4
+    }]
+  };
 
-            data: [
-                {
-                    type: "doughnut",
-                    innerRadius: 90,  // Makes the doughnut thinner
-                    dataPoints: [
-                        { y: 64, color: "#0acf97" },
-                        { y: 10, color: "#fa5c7c" },
-                        { y: 26, color: "#727cf5" }
-                    ]
-                }
-            ]
-        });
-
-    chart.render();
+  const config = {
+    type: 'doughnut',
+    data: data,
+  };
+  
+  new Chart(ctx,config);
 }
 
-
+addPieChart();
