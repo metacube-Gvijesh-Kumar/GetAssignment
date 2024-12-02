@@ -40,8 +40,9 @@ function currentEmpInputValid(label){
 
 function resetEmployeeForm(fullReset){
         
+
         show(empCancel);
-        show(empNext);
+          show(empNext);
         hide(empSubmit);
 
         currentEmpLabel=undefined;
@@ -95,7 +96,6 @@ function takeNextEmpInput(){
 
     show(input);
     show(label);
-
 }
 
 
@@ -110,7 +110,7 @@ empNext.addEventListener('click',(e)=>{
     takeNextEmpInput();
 })
 
-empToggle.addEventListener("input",(e)=>{
+employeeToggle.addEventListener("input",(e)=>{
 
     let checked = e.target.checked;
     resetEmployeeForm(false);
@@ -118,7 +118,9 @@ empToggle.addEventListener("input",(e)=>{
     if(empId!=undefined){
         alert("your employeeId is : "+ empId);
         empIdTag.innerHTML="your employeeId is : "+ empId;
-        document.querySelector("#AddEmployee .container").classList.add("hide");
+
+        document.querySelector("#AddEmployee .sideContainer").classList.add("hide");
+        document.querySelector("#AddEmployee .formContainer").classList.add("hide");
     }
     else if(!checked){
         takeNextEmpInput();
@@ -140,11 +142,166 @@ empForm.addEventListener('submit',(e)=>{
     alert("your employeeId is : "+ empId);
     resetEmployeeForm(true);
 
-    empToggle.checked=true;
     empIdTag.innerHTML="your employeeId is : "+ empId;
 
-    document.querySelector("#AddEmployee .container").classList.add("hide")
-
+    document.querySelector("#AddEmployee .sideContainer").classList.add("hide");
+    document.querySelector("#AddEmployee .formContainer").classList.add("hide");
 
     console.log("submitted");
 })
+
+
+
+let nextvehId=1456;
+
+let vehId;
+let currentVeh;
+
+const vehForm  = document.querySelector("#AddVehicle .form");
+const vehToggle= document.querySelector("#vehicleToggle");
+
+const vehLabels= document.querySelectorAll("#AddVehicle .form > .form__label");
+
+const vehCancel= document.querySelector("#AddVehicle .cancel");
+const vehNext  = document.querySelector("#AddVehicle .next");
+const vehSubmit = document.querySelector("#AddVehicle .form__submit")
+
+const vehIdTag = document.querySelector('#vehId');
+
+let currentVehLabel;
+
+
+function show(ele){
+    if(ele.classList.contains('hide')){
+        ele.classList.remove('hide');
+    }
+    ele.classList.add('show');
+}
+
+function hide(ele){
+    if(ele.classList.contains('show')){
+        ele.classList.remove('show');
+    }
+    ele.classList.add('hide');
+}
+
+
+function currentVehInputValid(label){
+    return true;
+}
+
+
+function resetVehicleForm(fullReset){
+        
+
+        show(vehCancel);
+          show(vehNext);
+        hide(vehSubmit);
+
+        currentVehLabel=undefined;
+        
+        if(!fullReset)
+            return;
+
+        const vehInputs= document.querySelectorAll("#AddVehicle .form .form__input");
+
+        for(const label of vehLabels){
+            hide(label)
+        }
+
+        for(const vehInput of vehInputs){
+
+            hide(vehInput);
+        
+            if(vehInput.type=="radio"){
+                vehInput.checked=false;
+            }
+            else{
+                vehInput.value="";
+            }
+        }
+}
+
+function takeNextVehInput(){
+    console.log('here');
+
+    if(currentVehLabel==undefined)
+        currentVehLabel=0;
+
+    else if(currentVehInputValid(vehLabels[currentVehLabel])){
+
+        const label=vehLabels[currentVehLabel];
+        const inputId = label.getAttribute('for');
+        const input = document.querySelector('#'+inputId);
+        hide(input);
+        hide(label);
+        currentVehLabel++;
+    }
+    else
+        return;
+
+    if(currentVehLabel>=vehLabels.length-1){
+        hide(vehNext);
+        show(vehSubmit);
+    }
+    const label=vehLabels[currentVehLabel];
+    const inputId = label.getAttribute('for');
+    const input = document.querySelector('#'+inputId);
+
+    show(input);
+    show(label);
+}
+
+
+
+
+vehCancel.addEventListener('click',(e)=>{
+    resetVehicleForm(true);
+    vehToggle.checked=true;
+})
+
+vehNext.addEventListener('click',(e)=>{
+    takeNextVehInput();
+})
+
+vehToggle.addEventListener("input",(e)=>{
+
+    let checked = e.target.checked;
+    resetVehicleForm(false);
+
+    if(vehId!=undefined){
+        alert("your VehicleId is : "+ vehId);
+        vehIdTag.innerHTML="your VehicleId is : "+ vehId;
+
+        document.querySelector("#AddVehicle .sideContainer").classList.add("hide");
+        document.querySelector("#AddVehicle .formContainer").classList.add("hide");
+    }
+    else if(!checked){
+        takeNextVehInput();
+    }
+});
+
+vehForm.addEventListener('submit',(e)=>{
+
+    e.preventDefault();
+
+    const data = new FormData(vehForm);
+    for (const [name,value] of data) {
+      console.log(name, ":", value)
+    }        
+    currentVeh=data;
+    vehId=nextvehId;
+    nextvehId++;
+
+    alert("your vehicle Id is : "+ vehId);
+    resetVehicleForm(true);
+
+    vehIdTag.innerHTML="your VehicleId is : "+ vehId;
+
+    document.querySelector("#AddVehicle .sideContainer").classList.add("hide");
+    document.querySelector("#AddVehicle .formContainer").classList.add("hide");
+
+    console.log("submitted");
+})
+
+
