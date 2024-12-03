@@ -34,6 +34,8 @@ function hide(ele){
 
 
 function currentEmpInputValid(label){
+    //currently here we are returning true but later we will do verification here a
+    // just query select the input corresponding to the label and then we can check the value of the input
     return true;
 }
 
@@ -151,12 +153,7 @@ empForm.addEventListener('submit',(e)=>{
 })
 
 
-
-let nextvehId=1456;
-
-let vehId;
-let currentVeh;
-
+let vehType; // stores vehicle type
 const vehForm  = document.querySelector("#AddVehicle .form");
 const vehToggle= document.querySelector("#vehicleToggle");
 
@@ -269,9 +266,9 @@ vehToggle.addEventListener("input",(e)=>{
     let checked = e.target.checked;
     resetVehicleForm(false);
 
-    if(vehId!=undefined){
-        alert("your VehicleId is : "+ vehId);
-        vehIdTag.innerHTML="your VehicleId is : "+ vehId;
+    if(vehType!=undefined){
+        alert("your pricing has been updated as per the vehicle type" + vehType);
+        vehIdTag.innerHTML="your pricing has been updated as per the vehicle type " + vehType;
 
         document.querySelector("#AddVehicle .sideContainer").classList.add("hide");
         document.querySelector("#AddVehicle .formContainer").classList.add("hide");
@@ -286,18 +283,23 @@ vehForm.addEventListener('submit',(e)=>{
     e.preventDefault();
 
     const data = new FormData(vehForm);
+
     for (const [name,value] of data) {
       console.log(name, ":", value)
-    }        
-    currentVeh=data;
-    vehId=nextvehId;
-    nextvehId++;
+      if(name=="type")
+        vehType=value;
+    }
 
-    alert("your vehicle Id is : "+ vehId);
+    document.querySelector("#"+vehType+"Card").classList.add("show");
+    document.querySelector("#pricingId").classList.add("hide");
+
+    // update the pricing section as per the value of the veh type entered by user
+
+    alert("your pricing has been updated as per the vehicle type" + vehType);
+    vehIdTag.innerHTML="your pricing has been updated as per the vehicle type " + vehType;
     resetVehicleForm(true);
 
-    vehIdTag.innerHTML="your VehicleId is : "+ vehId;
-
+    
     document.querySelector("#AddVehicle .sideContainer").classList.add("hide");
     document.querySelector("#AddVehicle .formContainer").classList.add("hide");
 

@@ -138,17 +138,17 @@
                                 Type
                             </label>
                          
-                            <div id="#vehicleRadio" role="radiogroup" class="form__radio hide">
-                                <label class="form__label">
-                                    <input class="form__input hide" type="radio" name="type" value="car"/>
+                            <div id="vehicleRadio" role="radiogroup" class="form__radio hide">
+                                <label for="carType" class="form__label">
+                                    <input id="carType" class="form__input" type="radio" name="type" value="car"/>
                                     car
                                 </label>
-                                <label class="form__label">
-                                    <input class="form__input hide" type="radio" name="type" value="bike"/>
+                                <label for="bikeType" class="form__label">
+                                    <input id="bikeType" class="form__input" type="radio" name="type" value="bike"/>
                                     bike
                                 </label>
-                                <label class="form__label">
-                                    <input class="form__input hide" type="radio" name="type" value="others"/>
+                                <label for="otherType" class="form__label">
+                                    <input id="otherType" class="form__input" type="radio" name="type" value="others"/>
                                     others
                                 </label>
                             </div>    
@@ -168,7 +168,8 @@
                                 Identification
                             </label>
                             <textarea id="Identification" class="form__input hide form__textArea"  name="Identification" rows="4" cols="50" placeholder="how your car can de identified?"></textarea>
-                        
+                             
+
                             <button type="button" class="cancel form__button">cancel</button>
                             <button type="button" class="next  form__button">next</button>
 
@@ -201,19 +202,18 @@
                 <div class="formContainer">    
                     <form class="form" action="/feedback" method="post">
                         
-                        <label for="rating" class="form__label hide">
+                        <label for="rating" class="form__label">
                             Rate on scale of 5
                         </label>
-                        <input id="rating" class="form__input hide" type="number" name="rating" max=5 min="1"/>
+                        <input id="rating" class="form__input" type="number" name="rating" max=5 min="1"/>
                         
-                        <label for="feedback" class="form__label hide">
+                        <label for="feedback" class="form__label">
                             Feedback
                         </label>
-                        <textarea id="feedback" class="form__input hide form__textArea"  name="feedback" rows="4" cols="40" placeholder="describe your experience..."></textarea>
+                        <textarea id="feedback" class="form__input form__textArea"  name="feedback" rows="4" cols="40" placeholder="describe your experience..."></textarea>
                        
-                        <button class="cancel form__button">cancel</button>
-                        <button class="next  form__button">next</button>
-                        <input class="form__submit form__button form__input hide" type="submit"/>
+    
+                        <input class="form__submit form__button form__input" type="submit"/>
                      
                     </form>
                 </div>
@@ -232,7 +232,8 @@
             <input id="pricingToggle" checked class="section__toggle" type="checkbox">
 
             <div class="cardContainer">
-                    <div class="card">
+                    <p id="pricingId">pls fill the vehicle form first to see pricing</p>
+                    <div id="carCard" class="card hide">
 
                         <h3 class="card__heading">Car</h3>
 
@@ -250,7 +251,7 @@
                         <button class="primaryBtn" >Purchase Now</button>
                     </div>
 
-                    <div class="card">
+                    <div id="bikeCard" class="card hide">
                         <h3 class="card__heading">Bike</h3>
 
                         <div class="card__logo">
@@ -267,7 +268,7 @@
                         <button class="primaryBtn" >Purchase Now</button>
                     </div>
 
-                    <div class="card">
+                    <div id="othersCard" class="card hide">
                         <h3 class="card__heading">others</h3>
 
                         <div class="card__logo">
