@@ -419,14 +419,15 @@ vehForm.addEventListener('submit',(e)=>{
         enteredEmpId=value;
     }
 
-   
-   
-
     let msg;
 
     if(enteredEmpId!=empId){
         msg='your entered empId doesnot correspond to employee id in our system get the emp Id through the employee reg form';
-        
+        vehType=undefined;
+        alert(msg);
+        resetVehicleForm(true);
+        vehToggle.checked=true;
+        return;
     }
     else{
         msg="your pricing has been updated as per the vehicle type " + vehType;
