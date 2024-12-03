@@ -6,16 +6,17 @@ let currentEmp;
 
 const empForm  = document.querySelector("#AddEmployee .form");
 const empToggle= document.querySelector("#employeeToggle");
-
 const empLabels= document.querySelectorAll("#AddEmployee .form > .form__label");
+const empIdTag = document.querySelector('#empId');
 
 const empCancel= document.querySelector("#AddEmployee .cancel");
 const empNext  = document.querySelector("#AddEmployee .next");
 const empSubmit = document.querySelector("#AddEmployee .form__submit")
 
-const empIdTag = document.querySelector('#empId');
-
 let currentEmpLabel;
+
+const password = document.querySelector("#password");
+const confirmPassword = document.querySelector("#confirmPassword");
 
 
 function show(ele){
@@ -32,13 +33,95 @@ function hide(ele){
     ele.classList.add('hide');
 }
 
+function removeStrengthClass(input){
+    if(input.classList.contains("error__input"))
+        input.classList.remove("error__input");
+
+    
+    if(input.classList.contains("strong__pass"))
+        input.classList.remove("strong__pass");
+
+    
+    if(input.classList.contains("normal__pass"))
+        input.classList.remove("normal__pass");
+}
+
+password.addEventListener('input',(e)=>{
+    
+    removeStrengthClass(e.target);
+
+    let strength=0;
+    let val = e.target.value;
+    console.log(val);
+    const smallReg=/[a-z]/;
+    const capitalReg=/[A-Z]/;
+    const numReg=/[0-9]/;
+    const specialReg=/[!@#$%^&*()_,.?]/;
+
+    if(val.length>=8)
+        strength++;
+    if(smallReg.test(val))
+        strength++;
+    if(capitalReg.test(val))
+        strength++;
+    if(numReg.test(val))
+        strength++;
+    if(specialReg.test(val))
+        strength++; 
+
+    if(strength<5){
+        e.target.classList.add('error__input');
+    }
+    else{
+
+        if(val.length>=12)
+            strength++;
+    
+        if(strength==5){
+            e.target.classList.add('normal__pass');
+        }
+        else{
+            e.target.classList.add('strong__pass');
+        }
+
+    }
+
+})
+
+confirmPassword.addEventListener('input',(e)=>{
+    removeStrengthClass(e.target);
+    let val = e.target.value;
+    if(password.value==val)
+        confirmPassword.classList.add('strong__pass');
+    else
+        confirmPassword.classList.add('error__input');
+})
 
 function currentEmpInputValid(label){
     
     const inputId = label.getAttribute('for');
     const input = document.querySelector('#'+inputId);
     
-    if(input.id == "gender__radio"){
+    if(input.id=="password"){
+        if (!input.checkValidity())
+            input.reportValidity();    
+        return true;
+    }
+    else if(input.id=="confirmPassword"){
+        
+        if (!input.checkValidity()){
+            input.reportValidity(); 
+            return false;
+        }
+
+        if(document.querySelector("#password").value!=input.value){   
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    else if(input.id == "gender__radio"){
 
         if(document.querySelector("#male").checked ||  document.querySelector("#female").checked || document.querySelector("#otherGender").checked){
             return true;
@@ -310,7 +393,7 @@ vehToggle.addEventListener("input",(e)=>{
     resetVehicleForm(false);
 
     if(vehType!=undefined){
-        alert("your pricing has been updated as per the vehicle type" + vehType);
+        // alert("your pricing has been updated as per the vehicle type" + vehType);
         vehIdTag.innerHTML="your pricing has been updated as per the vehicle type " + vehType;
 
         document.querySelector("#AddVehicle .sideContainer").classList.add("hide");
@@ -326,23 +409,38 @@ vehForm.addEventListener('submit',(e)=>{
     e.preventDefault();
 
     const data = new FormData(vehForm);
+    let enteredEmpId=0;
 
     for (const [name,value] of data) {
       console.log(name, ":", value)
       if(name=="type")
         vehType=value;
+      if(name=="employeeId")
+        enteredEmpId=value;
     }
 
-    document.querySelector("#"+vehType+"Card").classList.add("show");
-    document.querySelector("#pricingId").classList.add("hide");
+   
+   
 
-    // update the pricing section as per the value of the veh type entered by user
+    let msg;
 
-    alert("your pricing has been updated as per the vehicle type" + vehType);
-    vehIdTag.innerHTML="your pricing has been updated as per the vehicle type " + vehType;
+    if(enteredEmpId!=empId){
+        msg='your entered empId doesnot correspond to employee id in our system get the emp Id through the employee reg form';
+        
+    }
+    else{
+        msg="your pricing has been updated as per the vehicle type " + vehType;
+        document.querySelector("#pricingId").classList.add("hide");
+        document.querySelector("#"+vehType+"Card").classList.add("show");
+        document.querySelector("#pricingToggle").checked=false;  
+        document.querySelector("#"+vehType+"Card").scrollIntoView();
+    }
+
+    alert(msg);
+    vehIdTag.innerHTML=msg;
+
     resetVehicleForm(true);
 
-    
     document.querySelector("#AddVehicle .sideContainer").classList.add("hide");
     document.querySelector("#AddVehicle .formContainer").classList.add("hide");
 

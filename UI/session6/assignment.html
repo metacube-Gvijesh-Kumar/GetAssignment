@@ -86,12 +86,12 @@
                             <label for="password" class="form__label hide">
                                 Password
                             </label>
-                            <input required id="password" class="form__input hide" type="password" name="password" />
+                            <input required minlength="8" maxlength="15" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" id="password" class="form__input hide" type="password" name="password" />
 
                             <label for="confirmPassword" class="form__label hide">
                                 Confirm password
                             </label>
-                            <input required id="confirmPassword" class="form__input hide" type="password" name="confirmPassword" />
+                            <input required minlength="8" maxlength="15" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" id="confirmPassword" class="form__input hide" type="password" name="confirmPassword" />
 
                             <label for="mobile" class="form__label hide">
                                 Mobile
@@ -211,7 +211,6 @@
                         </label>
                         <textarea id="feedback" class="form__input form__textArea"  name="feedback" rows="4" cols="40" placeholder="describe your experience..."></textarea>
                        
-    
                         <input class="form__submit form__button form__input" type="submit"/>
                      
                     </form>
