@@ -34,6 +34,24 @@ function hide(ele){
 
 
 function currentEmpInputValid(label){
+    
+    const inputId = label.getAttribute('for');
+    const input = document.querySelector('#'+inputId);
+    
+    if(input.id == "gender__radio"){
+
+        if(document.querySelector("#male").checked ||  document.querySelector("#female").checked || document.querySelector("#otherGender").checked){
+            return true;
+        }
+
+        input.classList.add("error__input");
+        return false;
+        
+    }
+    else if (!input.checkValidity()){
+        input.reportValidity();    
+        return false;
+    }
     //currently here we are returning true but later we will do verification here a
     // just query select the input corresponding to the label and then we can check the value of the input
     return true;
@@ -52,27 +70,29 @@ function resetEmployeeForm(fullReset){
         if(!fullReset)
             return;
 
-        const empInputs= document.querySelectorAll("#AddEmployee .form .form__input");
+        const empInputs= document.querySelectorAll("#AddEmployee .form  .form__input");
+        const empRadio=document.querySelector("#AddEmployee .form .form__radio");
+
+        hide(empRadio);
 
         for(const label of empLabels){
             hide(label)
         }
 
         for(const empInput of empInputs){
-
-            hide(empInput);
-        
+            
             if(empInput.type=="radio"){
                 empInput.checked=false;
             }
             else{
+                hide(empInput);
                 empInput.value="";
             }
         }
 }
 
 function takeNextEmpInput(){
-    console.log('here');
+    // console.log('here');
 
     if(currentEmpLabel==undefined)
         currentEmpLabel=0;
@@ -184,6 +204,26 @@ function hide(ele){
 
 
 function currentVehInputValid(label){
+
+    const inputId = label.getAttribute('for');
+    const input = document.querySelector('#'+inputId);
+    
+    if(input.id == "vehicleRadio"){
+
+        if(document.querySelector("#carType").checked ||  document.querySelector("#bikeType").checked || document.querySelector("#otherType").checked){
+            return true;
+        }
+
+        input.classList.add("error__input");
+        return false;
+        
+    }
+    else if (!input.checkValidity()){
+        input.reportValidity();    
+        return false;
+    }
+    //currently here we are returning true but later we will do verification here a
+    // just query select the input corresponding to the label and then we can check the value of the input
     return true;
 }
 
@@ -202,25 +242,28 @@ function resetVehicleForm(fullReset){
 
         const vehInputs= document.querySelectorAll("#AddVehicle .form .form__input");
 
+        const vehRadio=document.querySelector("#AddVehicle .form .form__radio");
+
+        hide(vehRadio);
+
         for(const label of vehLabels){
             hide(label)
         }
 
         for(const vehInput of vehInputs){
 
-            hide(vehInput);
-        
             if(vehInput.type=="radio"){
                 vehInput.checked=false;
             }
             else{
+                hide(vehInput);
                 vehInput.value="";
             }
         }
 }
 
 function takeNextVehInput(){
-    console.log('here');
+    // console.log('here');
 
     if(currentVehLabel==undefined)
         currentVehLabel=0;

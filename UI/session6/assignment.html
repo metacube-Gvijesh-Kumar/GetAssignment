@@ -57,11 +57,11 @@
                             <label for="fullName" class="form__label hide">
                                 Full name
                             </label>
-                            <input id="fullName" class="form__input hide" type="text" name="fullName" />
+                            <input required onkeydown="return /[a-z]/i.test(event.key)" minlength="2" id="fullName" class="form__input hide" type="text" name="fullName" />
 
                             <label for="gender__radio" class="form__label hide"> Gender </label>
 
-                            <div id="gender__radio" role="radiogroup" class="form__radio hide">
+                            <div aria-required id="gender__radio" role="radiogroup" class="form__radio hide">
                                 <label for="male" class="form__label">
                                     <input id="male" class="form__input" type="radio" name="gender" value="male" />
                                     Male
@@ -78,25 +78,25 @@
                                 </label>
                             </div>
 
-                            <label for="email" class="form__label hide">
+                            <label  for="email" class="form__label hide">
                                 Email
                             </label>
-                            <input id="email" class="form__input hide" type="email" name="email" />
+                            <input required id="email" class="form__input hide" type="email" name="email" />
 
                             <label for="password" class="form__label hide">
                                 Password
                             </label>
-                            <input id="password" class="form__input hide" type="password" name="password" />
+                            <input required id="password" class="form__input hide" type="password" name="password" />
 
                             <label for="confirmPassword" class="form__label hide">
                                 Confirm password
                             </label>
-                            <input id="confirmPassword" class="form__input hide" type="password" name="confirmPassword" />
+                            <input required id="confirmPassword" class="form__input hide" type="password" name="confirmPassword" />
 
                             <label for="mobile" class="form__label hide">
                                 Mobile
                             </label>
-                            <input id="mobile" class="form__input hide" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}" placeholder="123-1245-678" />
+                            <input required  minlength="8" id="mobile" class="form__input hide" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}" placeholder="123-1245-678" />
                             
                             <button type="button" class="cancel form__button">cancel</button>
                             <button type="button" class="next  form__button">next</button>
@@ -124,15 +124,15 @@
             
                         <form class="form" action="/addVehicle" method="get">
 
-                            <label for="company" class="form__label hide">
+                            <label  for="company" class="form__label hide">
                                 company
                             </label>
-                            <input id="company" class="form__input hide" type="text" name="company" />
+                            <input required onkeydown="return /[a-z]/i.test(event.key)" minlength="2" id="company" class="form__input hide" type="text" name="company" />
 
-                            <label for="model" class="form__label hide">
+                            <label  for="model" class="form__label hide">
                                 Model
                             </label>
-                            <input id="model" class="form__input hide" type="text" name="model" />
+                            <input required minlength="2" id="model" class="form__input hide" type="text" name="model" />
 
                             <label for="vehicleRadio" class="form__label hide">
                                 Type
@@ -154,22 +154,21 @@
                             </div>    
                             
 
-                            <label for="vehicleNumber" class="form__label hide">
+                            <label  for="vehicleNumber" class="form__label hide">
                                 Vehicle number
                             </label>
-                            <input id="vehicleNumber" class="form__input hide" type="text" name="vehicleNumber" />
+                            <input required  minlength="2" id="vehicleNumber" class="form__input hide" type="text" name="vehicleNumber" />
 
                             <label for="employeeId" class="form__label hide">
                                 Employee id
                             </label>
-                            <input id="employeeId" class="form__input hide" type="text" name="employeeId" />
+                            <input required minlength="2" id="employeeId" class="form__input hide" type="text" name="employeeId" />
 
                             <label for="Identification" class="form__label hide">
                                 Identification
                             </label>
-                            <textarea id="Identification" class="form__input hide form__textArea"  name="Identification" rows="4" cols="50" placeholder="how your car can de identified?"></textarea>
+                            <textarea required minlength="20" id="Identification" class="form__input hide form__textArea"  name="Identification" rows="4" cols="50" placeholder="how your car can de identified?"></textarea>
                              
-
                             <button type="button" class="cancel form__button">cancel</button>
                             <button type="button" class="next  form__button">next</button>
 
@@ -206,7 +205,7 @@
                             Rate on scale of 5
                         </label>
                         <input id="rating" class="form__input" type="number" name="rating" max=5 min="1"/>
-                        
+                         
                         <label for="feedback" class="form__label">
                             Feedback
                         </label>

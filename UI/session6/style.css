@@ -225,3 +225,13 @@ a{
 .show{
     display:block;
 }
+
+.error__input{
+    border: 2px solid red;
+    box-shadow: 0px 0px 16px 1px rgba(255,0,0,1);
+}
+
+.form__input:user-invalid{
+    border: 2px solid red;
+    box-shadow: 0px 0px 16px 1px rgba(255,0,0,1);
+}
