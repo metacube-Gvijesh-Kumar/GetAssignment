@@ -451,3 +451,58 @@ vehForm.addEventListener('submit',(e)=>{
 })
 
 
+function currencyConverter(val,requiredCurrency,currCurrency){
+
+    // console.log('converstion')
+    // console.log(val,requiredCurrency,currCurrency);
+
+    let rupee=val; 
+
+    if(currCurrency=='euro'){
+        rupee=val*50;
+    }
+    else if(currCurrency=='usd'){
+        rupee=val*100;
+    }
+    else
+        rupee=val;
+    
+    let result;    
+
+    if(requiredCurrency=='usd')
+        result= '$'+ rupee/100;
+    else if(requiredCurrency=='euro')
+        result= '€'+rupee/50;
+    else
+        result= '₹'+rupee;    
+
+    // console.log(result);
+    
+    return result;
+}
+
+lastCurr='rupee'
+
+function changeCurrency(val,previousVal){
+
+        let cardCircles = document.querySelectorAll(".card__logo h2");
+
+        for(let cardCircle of cardCircles){
+            let [currVal] = cardCircle.innerHTML.match(/(\d+)/);
+            cardCircle.innerHTML=currencyConverter(currVal,val,previousVal);
+        }
+
+        let card__list__items = document.querySelectorAll(".card__list__item");
+
+        for(let card__list__item of card__list__items){
+            let [currVal] = card__list__item.innerHTML.match(/(\d+)/);
+            card__list__item.innerHTML=currencyConverter(currVal,val,previousVal);
+        }
+
+}
+
+document.querySelector("#currencies").addEventListener('change',(e)=>{
+    
+    changeCurrency(e.target.value,lastCurr);
+    lastCurr=e.target.value;
+})

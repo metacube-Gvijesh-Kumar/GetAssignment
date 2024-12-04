@@ -245,3 +245,15 @@ a{
     border: 2px solid orangered;
     box-shadow: 0px 0px 16px 1px orangered;
 }
+
+#currencies{
+   position: absolute;
+   top: 0;
+   right: 0;
+   border-radius: 20px;
+   padding: 4px;
+}
+
+#Pricing .section__heading{
+    position: relative;
+}
