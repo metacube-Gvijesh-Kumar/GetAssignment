@@ -48,7 +48,6 @@ function removeStrengthClass(input){
 
 password.addEventListener('input',(e)=>{
 
-    e.target.setCustomValidity('password must have at least one capital,one small alphabet,one numeric,one special character');
 
     removeStrengthClass(e.target);
 
@@ -105,9 +104,11 @@ function currentEmpInputValid(label){
     const input = document.querySelector('#'+inputId);
     
     if(input.id=="password"){
-        if (!input.checkValidity())
+        if (!input.checkValidity()){
             input.reportValidity();    
-        return true;
+            input.setCustomValidity('password must have at least one capital,one small alphabet,one numeric,one special character');
+            return false;
+        }
     }
     else if(input.id=="confirmPassword"){
         
@@ -137,8 +138,6 @@ function currentEmpInputValid(label){
         input.reportValidity();    
         return false;
     }
-    //currently here we are returning true but later we will do verification here a
-    // just query select the input corresponding to the label and then we can check the value of the input
     return true;
 }
 
@@ -190,9 +189,7 @@ function takeNextEmpInput(){
         hide(label);
         currentEmpLabel++;
     }
-    else
-        return;
-
+  
     if(currentEmpLabel>=empLabels.length-1){
         hide(empNext);
         show(empSubmit);
@@ -217,7 +214,7 @@ empNext.addEventListener('click',(e)=>{
     takeNextEmpInput();
 })
 
-employeeToggle.addEventListener("input",(e)=>{
+empToggle.addEventListener("input",(e)=>{
 
     let checked = e.target.checked;
     resetEmployeeForm(false);

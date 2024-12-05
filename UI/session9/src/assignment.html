@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parking System</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navBar">
+        <div class="logo">
+            <img class="logo__img containedImg" src="./images/logo.png" alt="logo">
+        </div>
+        <ul class="navBar__list list">
+            <li class="navBar__list__item"> <a href="#AddEmployee">Add Employee</a> </li>
+            <li class="navBar__list__item"> <a href="#AddVehicle">Add vehicle</a> </li>   
+            <li class="navBar__list__item"> <a href="#Feedback">Feedback</a> </li> 
+            <li class="navBar__list__item"> <a href="#Pricing">Pricing </a> </li>
+        </ul>
+    </nav> 
+    <main>
+        <section>
+            <div class="cover">
+                <img class="containedImg cover__img" src="./images/cover.jpg" alt="cover image">
+            </div>
+        </section>
+
+        <section class="section" id="AddEmployee">
+            
+            <div class="section__heading">
+                <h2 class="section__heading__head">Add Employee</h2>
+                <label for="employeeToggle">
+                    &#11206;
+                </label>
+            </div>
+
+            <input id="employeeToggle" checked class="section__toggle" type="checkbox">
+            
+            <div class="container">
+                <p id="empId"></p>
+                <div class="sideContainer">
+                    <img class="sideContainer__img containedImg" src="./images/feedback.png" alt="feed image">
+                </div>
+
+                <div class="formContainer">
+
+                        <form class="form" action="/addEmployee" method="post">
+
+                            <label for="fullName" class="form__label hide">
+                                Full name
+                            </label>
+                            <input required onkeydown="return /[a-z]/i.test(event.key)" minlength="2" id="fullName" class="form__input hide" type="text" name="fullName" />
+
+                            <label for="gender__radio" class="form__label hide"> Gender </label>
+
+                            <div aria-required id="gender__radio" role="radiogroup" class="form__radio hide">
+                                <label for="male" class="form__label">
+                                    <input id="male" class="form__input" type="radio" name="gender" value="male" />
+                                    Male
+                                </label>
+
+                                <label for="female" class="form__label">
+                                    <input id="female" class="form__input" type="radio" name="gender" value="female"/>
+                                    Female
+                                </label>
+
+                                <label for="otherGender" class="form__label">
+                                    <input id="otherGender" class="form__input" type="radio" name="gender" value="others"/>
+                                    others
+                                </label>
+                            </div>
+
+                            <label  for="email" class="form__label hide">
+                                Email
+                            </label>
+                            <input required id="email" class="form__input hide" type="email" name="email" />
+
+                            <label for="password" class="form__label hide">
+                                Password
+                            </label>
+                            <input required minlength="8" maxlength="15" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" id="password" class="form__input hide" type="password" name="password" />
+
+                            <label for="confirmPassword" class="form__label hide">
+                                Confirm password
+                            </label>
+                            <input required minlength="8" maxlength="15" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" id="confirmPassword" class="form__input hide" type="password" name="confirmPassword" />
+
+                            <label for="mobile" class="form__label hide">
+                                Mobile
+                            </label>
+                            <input required  minlength="8" id="mobile" class="form__input hide" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}" placeholder="123-1245-678" />
+                            
+                            <button type="button" class="cancel form__button">cancel</button>
+                            <button type="button" class="next  form__button">next</button>
+
+                            <input class="form__submit form__button form__input hide" type="submit"/>
+                          
+                        </form>
+                   </div>
+            </div>
+        </section>
+
+        <section class="section" id="AddVehicle">
+
+            <div class="section__heading">
+                <h2 class="section__heading__head">Add Vehicle</h2>
+                <label for="vehicleToggle">
+                    &#11206;
+                </label>
+            </div>
+            <input id="vehicleToggle" checked class="section__toggle" type="checkbox">
+            
+            <div class="container">
+                <p id="vehId"></p>
+                <div class="formContainer">
+            
+                        <form class="form" action="/addVehicle" method="get">
+
+                            <label  for="company" class="form__label hide">
+                                company
+                            </label>
+                            <input required onkeydown="return /[a-z]/i.test(event.key)" minlength="2" id="company" class="form__input hide" type="text" name="company" />
+
+                            <label  for="model" class="form__label hide">
+                                Model
+                            </label>
+                            <input required minlength="2" id="model" class="form__input hide" type="text" name="model" />
+
+                            <label for="vehicleRadio" class="form__label hide">
+                                Type
+                            </label>
+                         
+                            <div id="vehicleRadio" role="radiogroup" class="form__radio hide">
+                                <label for="carType" class="form__label">
+                                    <input id="carType" class="form__input" type="radio" name="type" value="car"/>
+                                    car
+                                </label>
+                                <label for="bikeType" class="form__label">
+                                    <input id="bikeType" class="form__input" type="radio" name="type" value="bike"/>
+                                    bike
+                                </label>
+                                <label for="otherType" class="form__label">
+                                    <input id="otherType" class="form__input" type="radio" name="type" value="others"/>
+                                    others
+                                </label>
+                            </div>    
+                            
+
+                            <label  for="vehicleNumber" class="form__label hide">
+                                Vehicle number
+                            </label>
+                            <input required  minlength="2" id="vehicleNumber" class="form__input hide" type="text" name="vehicleNumber" />
+
+                            <label for="employeeId" class="form__label hide">
+                                Employee id
+                            </label>
+                            <input required minlength="2" id="employeeId" class="form__input hide" type="text" name="employeeId" />
+
+                            <label for="Identification" class="form__label hide">
+                                Identification
+                            </label>
+                            <textarea required minlength="20" id="Identification" class="form__input hide form__textArea"  name="Identification" rows="4" cols="50" placeholder="how your car can de identified?"></textarea>
+                             
+                            <button type="button" class="cancel form__button">cancel</button>
+                            <button type="button" class="next  form__button">next</button>
+
+                            <input class="form__submit form__button form__input hide" type="submit"/>
+                          
+                        </form>
+                </div>
+                <div class="sideContainer">
+                    <img class="sideContainer__img containedImg" src="./images/feedback.png" alt="feed image">
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="Feedback">
+
+            <div class="section__heading">
+                <h2 class="section__heading__head">Feedback</h2>
+                <label for="feedbackToggle">
+                    &#11206;
+                </label>
+            </div>
+
+            <input id="feedbackToggle" checked class="section__toggle" type="checkbox">
+
+            <div class="container">
+                <div class="sideContainer">
+                    <img class="sideContainer__img containedImg" src="./images/feedback.png" alt="feed image">
+                </div>
+
+                <div class="formContainer">    
+                    <form class="form" action="/feedback" method="post">
+                        
+                        <label for="rating" class="form__label">
+                            Rate on scale of 5
+                        </label>
+                        <input id="rating" class="form__input" type="number" name="rating" max=5 min="1"/>
+                         
+                        <label for="feedback" class="form__label">
+                            Feedback
+                        </label>
+                        <textarea id="feedback" class="form__input form__textArea"  name="feedback" rows="4" cols="40" placeholder="describe your experience..."></textarea>
+                       
+                        <input class="form__submit form__button form__input" type="submit"/>
+                     
+                    </form>
+                </div>
+           </div>
+            
+        </section>
+
+        <section class="section" id="Pricing">
+
+            <div class="section__heading">
+                <h2 class="section__heading__head">Pricing</h2>
+                
+                <label for="pricingToggle">
+                    &#11206;
+                </label>
+
+                <select name="currencies" id="currencies">
+                    <option value="rupee">Rupee</option>
+                    <option value="usd">USD</option>
+                    <option value="euro">Euro</option>
+                </select>
+
+            </div>
+            <input id="pricingToggle" checked class="section__toggle" type="checkbox">
+
+
+            
+            <div class="cardContainer">
+                    <p id="pricingId">pls fill the vehicle form first to see pricing</p>
+                    <div id="carCard" class="card hide">
+
+                        <h3 class="card__heading">Car</h3>
+
+                        <div class="card__logo">
+                            <h2>₹1000</h2>
+                            <p>/month</p>    
+                        </div>
+
+                        <ul class="card__list list">  
+                            <li class="card__list__item list__item"><p>₹100 Daily</p></li>
+                            <li class="card__list__item list__item"><p>₹1000 Monthly</p></li> 
+                            <li class="card__list__item list__item"><p>₹5000 yearly</p></li> 
+                        </ul>
+
+                        <button class="primaryBtn" >Purchase Now</button>
+                    </div>
+
+                    <div id="bikeCard" class="card hide">
+                        <h3 class="card__heading">Bike</h3>
+
+                        <div class="card__logo">
+                            <h2>₹1000</h2>
+                            <p>/month</p>    
+                        </div>
+
+                        <ul class="card__list list">  
+                            <li class="card__list__item list__item"><p>₹100 Daily</p></li>
+                            <li class="card__list__item list__item"><p>₹1000 Monthly</p></li> 
+                            <li class="card__list__item list__item"><p>₹5000 yearly</p></li> 
+                        </ul>
+
+                        <button class="primaryBtn" >Purchase Now</button>
+                    </div>
+
+                    <div id="othersCard" class="card hide">
+                        <h3 class="card__heading">others</h3>
+
+                        <div class="card__logo">
+                            <h2>₹1000</h2>
+                            <p>/month</p>    
+                        </div>
+
+                        <ul class="card__list list">  
+                            <li class="card__list__item list__item"><p>₹100 Daily</p></li>
+                            <li class="card__list__item list__item"><p>₹1000 Monthly</p></li> 
+                            <li class="card__list__item list__item"><p>₹5000 yearly</p></li> 
+                        </ul>
+
+                        <button class="primaryBtn" >Purchase Now</button>
+                    </div>
+
+            </div>
+            
+        </section>
+
+    </main>
+</body>
+<script src="./index.js"></script>
+</html>

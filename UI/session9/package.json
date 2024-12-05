@@ -1,0 +1,14 @@
+{
+  "name": "session9",
+  "version": "1.0.0",
+  "description": "type script ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vijesh",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
