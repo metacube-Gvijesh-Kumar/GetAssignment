@@ -83,9 +83,14 @@ password?.addEventListener('input',(e:any)=>{
         strength++; 
 
     if(strength<5){
+        console.log('seted');
+        password.setCustomValidity('password must have at least one capital,one small alphabet,one numeric,one special character');
+        password.reportValidity();
         e.target.classList.add('error__input');
     }
     else{
+
+        password.setCustomValidity("");
 
         if(val.length>=12)
             strength++;
@@ -104,10 +109,15 @@ password?.addEventListener('input',(e:any)=>{
 confirmPassword?.addEventListener('input',(e:any)=>{
     removeStrengthClass(e.target);
     let val = e.target.value;
-    if(password?.value==val)
+    if(password?.value==val){
+        confirmPassword.setCustomValidity("");
         confirmPassword.classList.add('strong__pass');
-    else
+    }
+    else{
+        confirmPassword.setCustomValidity("confirm password should match password");
+        confirmPassword.reportValidity()
         confirmPassword.classList.add('error__input');
+    }
 })
 
 function currentEmpInputValid(label:HTMLLabelElement){
@@ -118,8 +128,8 @@ function currentEmpInputValid(label:HTMLLabelElement){
     if(input?.id=="password"){
         
         if (!input.checkValidity()){
+            input.classList.add("error__input");
             input.reportValidity(); 
-            input?.setCustomValidity('password must have at least one capital,one small alphabet,one numeric,one special character');
             return false;
         }
 
@@ -128,10 +138,12 @@ function currentEmpInputValid(label:HTMLLabelElement){
         
         if (!input.checkValidity()){
             input.reportValidity(); 
+            input.classList.add("error__input");
             return false;
         }
 
         if(password?.value!=input.value){   
+            input.classList.add("error__input");
             return false;
         }
         else{
@@ -155,10 +167,10 @@ function currentEmpInputValid(label:HTMLLabelElement){
     }
     else if (!input?.checkValidity()){
         input?.reportValidity();    
+        input?.classList.add("error__input");
         return false;
     }
-    //currently here we are returning true but later we will do verification here a
-    // just query select the input corresponding to the label and then we can check the value of the input
+
     return true;
 }
 
@@ -167,10 +179,7 @@ function resetEmployeeForm(fullReset:Boolean){
         
      
             show(empCancel);
-  
             show(empNext);
-
-     
             hide(empSubmit);
 
         currentEmpLabel=undefined;
@@ -236,6 +245,7 @@ function takeNextEmpInput(){
     const input:HTMLInputElement|null= document.querySelector('#'+inputId);
 
     show(input);
+    input?.focus();
     show(label);
 }
 
@@ -266,8 +276,8 @@ empToggle?.addEventListener('input',(e:Event|null)=>{
         alert("your employeeId is : "+ empId);
 
         
-    if(empIdTag==null)
-        return;
+            if(empIdTag==null)
+                return;
 
 
         empIdTag.innerHTML="your employeeId is : "+ empId;
@@ -281,6 +291,18 @@ empToggle?.addEventListener('input',(e:Event|null)=>{
         takeNextEmpInput();
     }
 });
+
+empForm?.addEventListener("keypress",(e)=>{
+
+    if(currentEmpLabel==undefined)
+        return;
+
+    if(e.code=='Enter' && currentEmpLabel<empLabels.length-1){
+            e.preventDefault();
+            takeNextEmpInput();    
+    }
+    
+},true);
 
 empForm?.addEventListener('submit',(e)=>{
 
@@ -357,6 +379,7 @@ function currentVehInputValid(label:HTMLLabelElement|null){
         
     }
     else if (!input?.checkValidity()){
+        input?.classList.add("error__input");
         input?.reportValidity();    
         return false;
     }
@@ -437,6 +460,7 @@ function takeNextVehInput(){
 
     show(input);
     show(label);
+    input?.focus();
 }
 
 
@@ -482,6 +506,18 @@ vehToggle?.addEventListener('input',(e:Event|null)=>{
         takeNextVehInput();
     }
 });
+
+vehForm?.addEventListener("keypress",(e)=>{
+
+    if(currentVehLabel==undefined)
+        return;
+
+    if(e.code=='Enter' && currentVehLabel<vehLabels.length-1){
+            e.preventDefault();
+            takeNextVehInput();    
+    }
+    
+},true);
 
 vehForm?.addEventListener('submit',(e)=>{
 

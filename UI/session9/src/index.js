@@ -55,9 +55,13 @@ password === null || password === void 0 ? void 0 : password.addEventListener('i
     if (specialReg.test(val))
         strength++;
     if (strength < 5) {
+        console.log('seted');
+        password.setCustomValidity('password must have at least one capital,one small alphabet,one numeric,one special character');
+        password.reportValidity();
         e.target.classList.add('error__input');
     }
     else {
+        password.setCustomValidity("");
         if (val.length >= 12)
             strength++;
         if (strength == 5) {
@@ -71,27 +75,34 @@ password === null || password === void 0 ? void 0 : password.addEventListener('i
 confirmPassword === null || confirmPassword === void 0 ? void 0 : confirmPassword.addEventListener('input', function (e) {
     removeStrengthClass(e.target);
     var val = e.target.value;
-    if ((password === null || password === void 0 ? void 0 : password.value) == val)
+    if ((password === null || password === void 0 ? void 0 : password.value) == val) {
+        confirmPassword.setCustomValidity("");
         confirmPassword.classList.add('strong__pass');
-    else
+    }
+    else {
+        confirmPassword.setCustomValidity("confirm password should match password");
+        confirmPassword.reportValidity();
         confirmPassword.classList.add('error__input');
+    }
 });
 function currentEmpInputValid(label) {
     var inputId = label.getAttribute('for');
     var input = document.querySelector('#' + inputId);
     if ((input === null || input === void 0 ? void 0 : input.id) == "password") {
         if (!input.checkValidity()) {
+            input.classList.add("error__input");
             input.reportValidity();
-            input === null || input === void 0 ? void 0 : input.setCustomValidity('password must have at least one capital,one small alphabet,one numeric,one special character');
             return false;
         }
     }
     else if ((input === null || input === void 0 ? void 0 : input.id) == "confirmPassword") {
         if (!input.checkValidity()) {
             input.reportValidity();
+            input.classList.add("error__input");
             return false;
         }
         if ((password === null || password === void 0 ? void 0 : password.value) != input.value) {
+            input.classList.add("error__input");
             return false;
         }
         else {
@@ -110,10 +121,9 @@ function currentEmpInputValid(label) {
     }
     else if (!(input === null || input === void 0 ? void 0 : input.checkValidity())) {
         input === null || input === void 0 ? void 0 : input.reportValidity();
+        input === null || input === void 0 ? void 0 : input.classList.add("error__input");
         return false;
     }
-    //currently here we are returning true but later we will do verification here a
-    // just query select the input corresponding to the label and then we can check the value of the input
     return true;
 }
 function resetEmployeeForm(fullReset) {
@@ -165,6 +175,7 @@ function takeNextEmpInput() {
     var inputId = label.getAttribute('for');
     var input = document.querySelector('#' + inputId);
     show(input);
+    input === null || input === void 0 ? void 0 : input.focus();
     show(label);
 }
 empCancel === null || empCancel === void 0 ? void 0 : empCancel.addEventListener('click', function (e) {
@@ -196,6 +207,14 @@ empToggle === null || empToggle === void 0 ? void 0 : empToggle.addEventListener
         takeNextEmpInput();
     }
 });
+empForm === null || empForm === void 0 ? void 0 : empForm.addEventListener("keypress", function (e) {
+    if (currentEmpLabel == undefined)
+        return;
+    if (e.code == 'Enter' && currentEmpLabel < empLabels.length - 1) {
+        e.preventDefault();
+        takeNextEmpInput();
+    }
+}, true);
 empForm === null || empForm === void 0 ? void 0 : empForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var data = new FormData(empForm);
@@ -241,6 +260,7 @@ function currentVehInputValid(label) {
         return false;
     }
     else if (!(input === null || input === void 0 ? void 0 : input.checkValidity())) {
+        input === null || input === void 0 ? void 0 : input.classList.add("error__input");
         input === null || input === void 0 ? void 0 : input.reportValidity();
         return false;
     }
@@ -300,6 +320,7 @@ function takeNextVehInput() {
     var input = document.querySelector('#' + inputId);
     show(input);
     show(label);
+    input === null || input === void 0 ? void 0 : input.focus();
 }
 vehCancel === null || vehCancel === void 0 ? void 0 : vehCancel.addEventListener('click', function (e) {
     resetVehicleForm(true);
@@ -329,6 +350,14 @@ vehToggle === null || vehToggle === void 0 ? void 0 : vehToggle.addEventListener
         takeNextVehInput();
     }
 });
+vehForm === null || vehForm === void 0 ? void 0 : vehForm.addEventListener("keypress", function (e) {
+    if (currentVehLabel == undefined)
+        return;
+    if (e.code == 'Enter' && currentVehLabel < vehLabels.length - 1) {
+        e.preventDefault();
+        takeNextVehInput();
+    }
+}, true);
 vehForm === null || vehForm === void 0 ? void 0 : vehForm.addEventListener('submit', function (e) {
     e.preventDefault();
     if (vehIdTag == null || vehToggle == null)

@@ -433,8 +433,6 @@ vehToggle.addEventListener("input",(e)=>{
 
 vehForm.addEventListener("keypress",(e)=>{
 
-
-
     if(e.code=='Enter' && currentVehLabel<vehLabels.length-1){
             e.preventDefault();
             takeNextVehInput();    
