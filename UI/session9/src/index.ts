@@ -436,6 +436,55 @@ const vehIdTag:HTMLParagraphElement|null = document.querySelector('#vehId');
 
 let currentVehLabel:number|undefined;
 
+enum VehicalType{
+    car = 'car',
+    bike = "bike",
+    others = "others"
+};
+
+class Vehicle{
+
+    private readonly company: string;
+    public getCompany(): string {
+        return this.company;
+    }
+
+    private readonly type:VehicalType;
+    public getVehicleType(): string {
+        return this.type;
+    }
+
+    private readonly model:string;
+    public getModel():string{
+        return this.model;
+    }
+
+    private readonly vehicleNo:string;
+    public getVehicleNo():string{
+        return this.vehicleNo;
+    }
+
+    private readonly identification:string;
+    public getIdentification():string{
+        return this.identification;
+    }
+
+
+    public constructor(company: string,type:VehicalType,model:string,vehicleNo:string,identification:string){
+        this.company = company;
+        this.type=type;
+        this.model=model;
+        this.vehicleNo=vehicleNo;
+        this.identification=identification;
+    }
+
+
+    public print():void {
+        console.log(this.company,this.model,this.type,this.vehicleNo,this.identification);
+        return;
+    }
+}
+
 
 function currentVehInputValid(label:HTMLLabelElement|null){
 
@@ -466,8 +515,6 @@ function currentVehInputValid(label:HTMLLabelElement|null){
         input?.reportValidity();    
         return false;
     }
-    //currently here we are returning true but later we will do verification here a
-    // just query select the input corresponding to the label and then we can check the value of the input
     return true;
 }
 
@@ -621,13 +668,42 @@ vehForm?.addEventListener('submit',(e)=>{
         enteredEmpId=value as string;
     })
 
-    // for (const [name,value] of data) {
-    //   console.log(name, ":", value)
-    //   if(name=="type")
-    //     vehType=value as string;
-    //   if(name=="employeeId")
-    //     enteredEmpId=value as string;
-    // }
+
+    let vehCompany:string|undefined;  
+    let typeVeh:VehicalType|undefined;
+    let vehModel:string|undefined;
+    let vehNo:string|undefined;
+    let vehIdent:string|undefined;
+
+    data.forEach((value,name)=>{
+
+        if(name=="company")
+            vehCompany=value as string ;
+        else if(name=="Identification")
+            vehIdent=value as string;
+        else if(name=="model")
+            vehModel=value as string;
+        else if(name=="vehicleNumber")
+            vehNo=value as string;
+        else if(name=="type"){
+            if(value=='car')
+                typeVeh = VehicalType.car;
+            else if(value='bike')
+                typeVeh=VehicalType.bike;
+            else if(value='others')
+                typeVeh=VehicalType.others;
+        }
+
+    })
+    
+    let createdveh:Vehicle|undefined;
+
+    if(vehCompany!=undefined && typeVeh!=undefined && vehIdent!=undefined && vehNo!=undefined && vehModel!=undefined){
+        createdveh = new Vehicle(vehCompany,typeVeh,vehModel,vehNo,vehIdent);
+    }
+
+    if(createdveh!=undefined)
+    createdveh.print();
 
     let msg;
 

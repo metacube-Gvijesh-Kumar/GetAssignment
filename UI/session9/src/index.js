@@ -305,6 +305,42 @@ var vehNext = document.querySelector("#AddVehicle .next");
 var vehSubmit = document.querySelector("#AddVehicle .form__submit");
 var vehIdTag = document.querySelector('#vehId');
 var currentVehLabel;
+var VehicalType;
+(function (VehicalType) {
+    VehicalType["car"] = "car";
+    VehicalType["bike"] = "bike";
+    VehicalType["others"] = "others";
+})(VehicalType || (VehicalType = {}));
+;
+var Vehicle = /** @class */ (function () {
+    function Vehicle(company, type, model, vehicleNo, identification) {
+        this.company = company;
+        this.type = type;
+        this.model = model;
+        this.vehicleNo = vehicleNo;
+        this.identification = identification;
+    }
+    Vehicle.prototype.getCompany = function () {
+        return this.company;
+    };
+    Vehicle.prototype.getVehicleType = function () {
+        return this.type;
+    };
+    Vehicle.prototype.getModel = function () {
+        return this.model;
+    };
+    Vehicle.prototype.getVehicleNo = function () {
+        return this.vehicleNo;
+    };
+    Vehicle.prototype.getIdentification = function () {
+        return this.identification;
+    };
+    Vehicle.prototype.print = function () {
+        console.log(this.company, this.model, this.type, this.vehicleNo, this.identification);
+        return;
+    };
+    return Vehicle;
+}());
 function currentVehInputValid(label) {
     if (label == null)
         return;
@@ -325,8 +361,6 @@ function currentVehInputValid(label) {
         input === null || input === void 0 ? void 0 : input.reportValidity();
         return false;
     }
-    //currently here we are returning true but later we will do verification here a
-    // just query select the input corresponding to the label and then we can check the value of the input
     return true;
 }
 function resetVehicleForm(fullReset) {
@@ -432,13 +466,35 @@ vehForm === null || vehForm === void 0 ? void 0 : vehForm.addEventListener('subm
         if (name == "employeeId")
             enteredEmpId = value;
     });
-    // for (const [name,value] of data) {
-    //   console.log(name, ":", value)
-    //   if(name=="type")
-    //     vehType=value as string;
-    //   if(name=="employeeId")
-    //     enteredEmpId=value as string;
-    // }
+    var vehCompany;
+    var typeVeh;
+    var vehModel;
+    var vehNo;
+    var vehIdent;
+    data.forEach(function (value, name) {
+        if (name == "company")
+            vehCompany = value;
+        else if (name == "Identification")
+            vehIdent = value;
+        else if (name == "model")
+            vehModel = value;
+        else if (name == "vehicleNumber")
+            vehNo = value;
+        else if (name == "type") {
+            if (value == 'car')
+                typeVeh = VehicalType.car;
+            else if (value = 'bike')
+                typeVeh = VehicalType.bike;
+            else if (value = 'others')
+                typeVeh = VehicalType.others;
+        }
+    });
+    var createdveh;
+    if (vehCompany != undefined && typeVeh != undefined && vehIdent != undefined && vehNo != undefined && vehModel != undefined) {
+        createdveh = new Vehicle(vehCompany, typeVeh, vehModel, vehNo, vehIdent);
+    }
+    if (createdveh != undefined)
+        createdveh.print();
     var msg;
     if (enteredEmpId == "" || enteredEmpId != empId) {
         msg = 'your entered empId doesnot correspond to employee id in our system get the emp Id through the employee reg form';
