@@ -1,6 +1,41 @@
+var Genders;
+(function (Genders) {
+    Genders["male"] = "male";
+    Genders["female"] = "female";
+    Genders["other"] = "others";
+})(Genders || (Genders = {}));
+;
+var employee = /** @class */ (function () {
+    function employee(name, gender, email, mobile, password) {
+        this.name = name;
+        this.gender = gender;
+        this.email = email;
+        this.mobile = mobile;
+        this.password = password;
+    }
+    employee.prototype.getName = function () {
+        return this.name;
+    };
+    employee.prototype.getGenders = function () {
+        return this.gender;
+    };
+    employee.prototype.getEmail = function () {
+        return this.email;
+    };
+    employee.prototype.getMobile = function () {
+        return this.mobile;
+    };
+    employee.prototype.getPassword = function () {
+        return this.password;
+    };
+    employee.prototype.print = function () {
+        console.log(this.name, this.gender, this.email, this.mobile, this.password);
+        return;
+    };
+    return employee;
+}());
 var nextEmpId = "1456";
 var empId;
-var currentEmp;
 var empForm = document.querySelector("#AddEmployee .form");
 var empToggle = document.querySelector("#employeeToggle");
 var empLabels = document.querySelectorAll("#AddEmployee .form > .form__label");
@@ -218,10 +253,36 @@ empForm === null || empForm === void 0 ? void 0 : empForm.addEventListener("keyp
 empForm === null || empForm === void 0 ? void 0 : empForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var data = new FormData(empForm);
-    // for (const [name,value] of data) {
-    //   console.log(name, ":", value)
-    // }
-    currentEmp = data;
+    var empName;
+    var empGender;
+    var empEmail;
+    var empMobile;
+    var empPass;
+    data.forEach(function (value, name) {
+        if (name == "fullName")
+            empName = value;
+        else if (name == "password")
+            empPass = value;
+        else if (name == "email")
+            empEmail = value;
+        else if (name == "phone")
+            empMobile = value;
+        else if (name == "gender")
+            empGender = value;
+    });
+    var createdEmp;
+    if (empName != undefined && empGender != undefined && empPass != undefined && empMobile != undefined && empEmail != undefined) {
+        var gen = void 0;
+        if (empGender == 'male')
+            gen = Genders.male;
+        else if (empGender == 'female')
+            gen = Genders.female;
+        else
+            gen = Genders.other;
+        createdEmp = new employee(empName, gen, empEmail, empMobile, empPass);
+    }
+    if (createdEmp != undefined)
+        createdEmp.print();
     empId = nextEmpId;
     nextEmpId = "something";
     alert("your employeeId is : " + empId);

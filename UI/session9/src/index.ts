@@ -1,8 +1,55 @@
 
-let nextEmpId:string="1456";
+enum Genders{
+    male = 'male',
+    female = "female",
+    other = "others"
+};
 
+class employee{
+
+    private readonly name: string;
+    public getName(): string {
+        return this.name;
+    }
+
+    private readonly gender:Genders;
+    public getGenders(): string {
+        return this.gender;
+    }
+
+    private readonly email:string;
+    public getEmail():string{
+        return this.email;
+    }
+
+    private readonly mobile:string;
+    public getMobile():string{
+        return this.mobile;
+    }
+
+    private readonly password:string;
+    public getPassword():string{
+        return this.password;
+    }
+
+
+    public constructor(name: string,gender:Genders,email:string,mobile:string,password:string){
+        this.name = name;
+        this.gender=gender;
+        this.email=email;
+        this.mobile=mobile;
+        this.password=password;
+    }
+
+
+    public print():void {
+        console.log(this.name,this.gender,this.email,this.mobile,this.password);
+        return;
+    }
+}
+
+let nextEmpId:string="1456";
 let empId:string;
-let currentEmp;
 
 const empForm:HTMLFormElement | null  = document.querySelector("#AddEmployee .form");
 const empToggle:HTMLInputElement | null = document.querySelector("#employeeToggle");
@@ -310,11 +357,47 @@ empForm?.addEventListener('submit',(e)=>{
 
     const data = new FormData(empForm);
 
-    // for (const [name,value] of data) {
-    //   console.log(name, ":", value)
-    // }
+    let empName:string|undefined;  
+    let empGender:string|undefined;
+    let empEmail:string|undefined;
+    let empMobile:string|undefined;
+    let empPass:string|undefined;
 
-    currentEmp=data;
+    data.forEach((value,name)=>{
+
+        if(name=="fullName")
+            empName=value as string ;
+        else if(name=="password")
+            empPass=value as string;
+        else if(name=="email")
+            empEmail=value as string;
+        else if(name=="phone")
+            empMobile=value as string;
+        else if(name=="gender")
+            empGender=value as string;
+
+    })
+    
+    let createdEmp:employee|undefined;
+
+    if(empName!=undefined && empGender!=undefined && empPass!=undefined && empMobile!=undefined && empEmail!=undefined){
+
+        let gen:Genders ;
+
+        if(empGender=='male')
+            gen = Genders.male;
+        else if(empGender=='female')
+            gen= Genders.female;
+        else 
+            gen = Genders.other;
+
+        createdEmp = new employee(empName,gen,empEmail,empMobile,empPass);
+    }
+
+    if(createdEmp!=undefined)
+    createdEmp.print();
+
+
     empId=nextEmpId;
 
     nextEmpId="something";
