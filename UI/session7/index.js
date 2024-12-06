@@ -48,13 +48,14 @@ function removeStrengthClass(input){
 
 password.addEventListener('input',(e)=>{
 
-    e.target.setCustomValidity('password must have at least one capital,one small alphabet,one numeric,one special character');
 
     removeStrengthClass(e.target);
 
     let strength=0;
     let val = e.target.value;
+
     console.log(val);
+
     const smallReg=/[a-z]/;
     const capitalReg=/[A-Z]/;
     const numReg=/[0-9]/;
@@ -72,9 +73,14 @@ password.addEventListener('input',(e)=>{
         strength++; 
 
     if(strength<5){
+        console.log('seted');
+        password.setCustomValidity('password must have at least one capital,one small alphabet,one numeric,one special character');
+        password.reportValidity();
         e.target.classList.add('error__input');
     }
     else{
+
+        password.setCustomValidity("");
 
         if(val.length>=12)
             strength++;
@@ -93,10 +99,15 @@ password.addEventListener('input',(e)=>{
 confirmPassword.addEventListener('input',(e)=>{
     removeStrengthClass(e.target);
     let val = e.target.value;
-    if(password.value==val)
+    if(password.value==val){
+        confirmPassword.setCustomValidity("");
         confirmPassword.classList.add('strong__pass');
-    else
+    }
+    else{
+        confirmPassword.setCustomValidity("confirm password should match password");
+        confirmPassword.reportValidity()
         confirmPassword.classList.add('error__input');
+    }
 })
 
 function currentEmpInputValid(label){
@@ -105,18 +116,22 @@ function currentEmpInputValid(label){
     const input = document.querySelector('#'+inputId);
     
     if(input.id=="password"){
-        if (!input.checkValidity())
-            input.reportValidity();    
-        return true;
+        if (!input.checkValidity()){
+            input.classList.add("error__input");
+            input.reportValidity();                
+            return false;
+        }
     }
     else if(input.id=="confirmPassword"){
         
         if (!input.checkValidity()){
             input.reportValidity(); 
+            input.classList.add("error__input");
             return false;
         }
 
-        if(document.querySelector("#password").value!=input.value){   
+        if(document.querySelector("#password").value!=input.value){ 
+            input.classList.add("error__input");  
             return false;
         }
         else{
@@ -135,10 +150,9 @@ function currentEmpInputValid(label){
     }
     else if (!input.checkValidity()){
         input.reportValidity();    
+        input.classList.add("error__input");
         return false;
     }
-    //currently here we are returning true but later we will do verification here a
-    // just query select the input corresponding to the label and then we can check the value of the input
     return true;
 }
 
@@ -190,9 +204,7 @@ function takeNextEmpInput(){
         hide(label);
         currentEmpLabel++;
     }
-    else
-        return;
-
+  
     if(currentEmpLabel>=empLabels.length-1){
         hide(empNext);
         show(empSubmit);
@@ -202,6 +214,7 @@ function takeNextEmpInput(){
     const input = document.querySelector('#'+inputId);
 
     show(input);
+    input.focus();
     show(label);
 }
 
@@ -217,7 +230,7 @@ empNext.addEventListener('click',(e)=>{
     takeNextEmpInput();
 })
 
-employeeToggle.addEventListener("input",(e)=>{
+empToggle.addEventListener("input",(e)=>{
 
     let checked = e.target.checked;
     resetEmployeeForm(false);
@@ -233,6 +246,16 @@ employeeToggle.addEventListener("input",(e)=>{
         takeNextEmpInput();
     }
 });
+
+empForm.addEventListener("keypress",(e)=>{
+    if(e.code=='Enter' && currentEmpLabel<empLabels.length-1){
+            e.preventDefault();
+            takeNextEmpInput();    
+    }
+    
+},true);
+
+
 
 empForm.addEventListener('submit',(e)=>{
 
@@ -304,6 +327,7 @@ function currentVehInputValid(label){
         
     }
     else if (!input.checkValidity()){
+        input.classList.add("error__input");
         input.reportValidity();    
         return false;
     }
@@ -375,6 +399,7 @@ function takeNextVehInput(){
 
     show(input);
     show(label);
+    input.focus();
 }
 
 
@@ -405,6 +430,17 @@ vehToggle.addEventListener("input",(e)=>{
         takeNextVehInput();
     }
 });
+
+vehForm.addEventListener("keypress",(e)=>{
+
+
+
+    if(e.code=='Enter' && currentVehLabel<vehLabels.length-1){
+            e.preventDefault();
+            takeNextVehInput();    
+    }
+    
+},true);
 
 vehForm.addEventListener('submit',(e)=>{
 
