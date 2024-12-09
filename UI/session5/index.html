@@ -274,73 +274,205 @@
 
           <main class="dashboard ">
 
-            <div class="row p-4 g-4 w-100">
+            <div class="row p-4 g-2 w-100">
 
-              <div class="projects col-12 p-0">
-                
-                <div class="d-flex justify-content-between">
-                  <h5 class="mb-4">Projects</h5>
-                  <p class="bread-crumb">
-                    <a href="#">Hyper</a> > <a href="#">Dashboard</a> > Projects
-                  </p>
-                </div>
-
-                <div class="row g-0 custom-card justify-content-center">
-
-                  <div class="col-sm-12 col-md-6 col-lg-3 text-center p-4  project">
-                    <i class="bi bi-briefcase project-icon"></i>
-                    <p class="fw-bold mt-2 fs-4">29</p>
-                    <p>Total Projects</p>
+              <div class="col-12">
+                <div class="projects  p-0">
+                  
+                  <div class="d-flex justify-content-between">
+                    <h5 class="mb-4">Projects</h5>
+                    <p class="bread-crumb">
+                      <a href="#">Hyper</a> > <a href="#">Dashboard</a> > Projects
+                    </p>
                   </div>
 
-                  <div class="col-sm-12 col-md-6 col-lg-3 text-center p-4  project">
-                    <i class="bi bi-grid project-icon"></i>
-                    <p class="fw-bold mt-2  fs-4">715</p>
-                    <p>Total Tasks</p>
-                  </div>
+                  <div class="row g-0 custom-card justify-content-center">
 
-                  <div class="col-sm-12 col-md-6 col-lg-3 text-center p-4  project">
-                    <i class="bi bi-people project-icon"></i>
-                    <p class="fw-bold mt-2  fs-4">31</p>
-                    <p>Members</p>
-                  </div>
+                    <div class="col-sm-12 col-md-6 col-lg-3 text-center p-4  project">
+                      <i class="bi bi-briefcase project-icon"></i>
+                      <p class="fw-bold mt-2 fs-4">29</p>
+                      <p>Total Projects</p>
+                    </div>
 
-                  <div class="col-sm-12 col-md-6 col-lg-3 text-center p-4  project">
-                    <i class="bi bi-graph-up project-icon"></i>
-                    <p class="fw-bold mt-2  fs-4">93% <i class="bi bi-arrow-up project green-arrow"></i></p>
-                    <p>Productivity</p>
-                  </div>
+                    <div class="col-sm-12 col-md-6 col-lg-3 text-center p-4  project">
+                      <i class="bi bi-grid project-icon"></i>
+                      <p class="fw-bold mt-2  fs-4">715</p>
+                      <p>Total Tasks</p>
+                    </div>
 
+                    <div class="col-sm-12 col-md-6 col-lg-3 text-center p-4  project">
+                      <i class="bi bi-people project-icon"></i>
+                      <p class="fw-bold mt-2  fs-4">31</p>
+                      <p>Members</p>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-3 text-center p-4  project">
+                      <i class="bi bi-graph-up project-icon"></i>
+                      <p class="fw-bold mt-2  fs-4">93% <i class="bi bi-arrow-up project green-arrow"></i></p>
+                      <p>Productivity</p>
+                    </div>
+
+                  </div>
                 </div>
               </div>
 
-              <div class="project-status col-4 custom-card p-4 d-flex flex-column gap-3">
+            </div>
 
-                <div class="d-flex justify-content-between">
-                  <p>PROJECT STATUS</p>
-                  <i class="bi bi-three-dots-vertical"></i>
+            <div class="row g-2 p-4  w-100">
+              
+              <div class="col-4">
+                <div class="project-status custom-card p-4 d-flex flex-column gap-3">
+
+                  <div class="d-flex justify-content-between">
+                    <p>PROJECT STATUS</p>
+                    <i class="bi bi-three-dots-vertical"></i>
+                  </div>
+  
+                  <div >
+                    <canvas  id="pieChart"></canvas>
+                  </div>
+  
+                  <div class="status-icons d-flex justify-content-between">
+                    <div class="status-icon text-center">
+                      <i class="bi bi-graph-up-arrow green-arrow"></i>
+                      <p class="status-percent fs-3">64%</p>
+                      <p class="table-grey-txt">Completed</p>
+                    </div>
+                    <div class="status-icon text-center">
+                      <i class="bi bi-graph-down-arrow inprogress-arrow"></i>
+                      <p class="status-percent fs-3">26%</p>
+                      <p class="table-grey-txt">Inprogress</p>
+                    </div>
+                    <div class="status-icon text-center">
+                      <i class="bi bi-graph-down-arrow behind-arrow"></i>
+                      <p class="status-percent fs-3">10%</p>
+                      <p class="table-grey-txt">Behind</p>
+                    </div>
+                  </div>
+  
+                </div>
+              </div>
+
+              <div class="col-8">
+                
+                <div class="p-4 custom-card">
+                  <div class="d-flex justify-content-between">
+                    <p class="mb-0">TASKS</p>
+                    <i class="bi bi-three-dots-vertical"></i>
+                  </div>
                 </div>
 
-                <div >
-                  <canvas  id="pieChart"></canvas>
-                </div>
+                <p class="task-sub w-100 table-14-txt text-center mb-0 py-2">
+                 <span class="fw-bolder">
+                  107
+                </span> Tasks completed out of 195
+                </p>
 
-                <div class="status-icons d-flex justify-content-between">
-                  <div class="status-icon text-center">
-                    <i class="bi bi-graph-up-arrow green-arrow"></i>
-                    <p class="status-percent fs-3">64%</p>
-                    <p>Completed</p>
-                  </div>
-                  <div class="status-icon text-center">
-                    <i class="bi bi-graph-down-arrow inprogress-arrow"></i>
-                    <p class="status-percent fs-3">26%</p>
-                    <p>Inprogress</p>
-                  </div>
-                  <div class="status-icon text-center">
-                    <i class="bi bi-graph-down-arrow behind-arrow"></i>
-                    <p class="status-percent fs-3">10%</p>
-                    <p>Behind</p>
-                  </div>
+                <div class="p-4 custom-card">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p class="table-14-txt fw-bolder">Coffee detail page - Main Page</p>
+                          <p class="table-grey-txt">Due in 3 days</p> 
+                        </td>
+                        <td>
+                          <p class="table-grey-txt">status</p> 
+                          <span class="badge status-inProgress">In-progress</span>
+                          <!-- <p class="table-status status-inProgress">In-progress</p> -->
+                        </td>
+                        <td>
+                          <p class="table-grey-txt">Assigned to</p> 
+                          <p class="table-14-txt">Logan R. Cohn</p>
+                        </td>
+                        <td>
+                          <p class="table-grey-txt">Total time spend</p> 
+                          <p class="table-14-txt">3h 20min</p>
+                        </td>
+
+                        <td class="align-middle">
+                          <i class="table-icon bi bi-pencil-fill "></i>
+                          <i class="table-icon bi bi-trash-fill "></i>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <p class="table-14-txt fw-bolder">Coffee detail page - Main Page</p>
+                          <p class="table-grey-txt">Due in 3 days</p> 
+                        </td>
+                        <td>
+                          <p class="table-grey-txt">status</p> 
+                          <span class="badge status-outdated">Outdated</span>
+                          <!-- <p class="table-status status-inProgress">In-progress</p> -->
+                        </td>
+                        <td>
+                          <p class="table-grey-txt">Assigned to</p> 
+                          <p class="table-14-txt">Logan R. Cohn</p>
+                        </td>
+                        <td>
+                          <p class="table-grey-txt">Total time spend</p> 
+                          <p class="table-14-txt">3h 20min</p>
+                        </td>
+
+                        <td class="align-middle">
+                          <i class="table-icon bi bi-pencil-fill "></i>
+                          <i class="table-icon bi bi-trash-fill "></i>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <p class="table-14-txt fw-bolder">Coffee detail page - Main Page</p>
+                          <p class="table-grey-txt">Due in 3 days</p> 
+                        </td>
+                        <td>
+                          <p class="table-grey-txt">status</p> 
+                          <span class="badge status-completed">Completed</span>
+                        </td>
+                        <td>
+                          <p class="table-grey-txt">Assigned to</p> 
+                          <p class="table-14-txt">Logan R. Cohn</p>
+                        </td>
+                        <td>
+                          <p class="table-grey-txt">Total time spend</p> 
+                          <p class="table-14-txt">3h 20min</p>
+                        </td>
+
+                        <td class="align-middle">
+                          <i class="table-icon bi bi-pencil-fill "></i>
+                          <i class="table-icon bi bi-trash-fill "></i>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <p class="table-14-txt fw-bolder">Coffee detail page - Main Page</p>
+                          <p class="table-grey-txt">Due in 3 days</p> 
+                        </td>
+                        <td>
+                          <p class="table-grey-txt">status</p> 
+                          <span class="badge status-inProgress">In-progress</span>
+                          <!-- <p class="table-status status-inProgress">In-progress</p> -->
+                        </td>
+                        <td>
+                          <p class="table-grey-txt">Assigned to</p> 
+                          <p class="table-14-txt">Logan R. Cohn</p>
+                        </td>
+                        <td>
+                          <p class="table-grey-txt">Total time spend</p> 
+                          <p class="table-14-txt">3h 20min</p>
+                        </td>
+
+                        <td class="align-middle">
+                          <i class="table-icon bi bi-pencil-fill "></i>
+                          <i class="table-icon bi bi-trash-fill "></i>
+                        </td>
+                      </tr>
+
+                      
+                    </tbody>
+                  </table>
                 </div>
 
               </div>
