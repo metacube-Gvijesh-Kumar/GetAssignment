@@ -1,0 +1,14 @@
+{
+  "name": "session-10",
+  "version": "1.0.0",
+  "description": "a react session 10 assignment task manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vijesh dewasi",
+  "license": "ISC",
+  "dependencies": {
+    "create-react-app": "^5.0.1"
+  }
+}
