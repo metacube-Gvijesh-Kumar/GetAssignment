@@ -1,6 +1,16 @@
 import TaskCardEdit from "./TaskCardEdit";
+import TaskContext from "../TaskContext";
+import { useContext } from "react";
 
 const NavBar = (props) => {
+
+    const [taskUnderEdit, setTaskUnderEdit] = useContext(TaskContext);
+
+    const handleModalClose = (e)=>{
+        setTaskUnderEdit({});
+    }
+
+    
     return (<>
         <nav className="p-4 d-flex justify-content-between border border-bottom position-sticky w-100 bg-white">
             <p className="mb-0 text-info p-2 rounded fw-bolder">Task tracker</p>
@@ -12,7 +22,7 @@ const NavBar = (props) => {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h4 className="text-info-emphasis">Create a task</h4>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" onClick={(e)=>{handleModalClose()}}   className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
                         <TaskCardEdit></TaskCardEdit>

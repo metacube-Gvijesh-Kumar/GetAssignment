@@ -9,7 +9,6 @@ import TasksContext from './TasksContext';
 
 function App() {
 
-
   const nextTaskIdInit = 18;
   const tasksInit = [
     {
