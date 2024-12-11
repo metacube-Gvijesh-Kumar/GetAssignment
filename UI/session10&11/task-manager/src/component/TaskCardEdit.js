@@ -1,27 +1,26 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import './TaskCard.css'
+import TaskContext from "../TaskContext";
 
 const TaskCardEdit = (props)=>{
     
-    const taskUpdater = props.updateCallback;
-    const title = props.title;
-    const description = props.description;
-    const status = props.status;
-    const priority =  props.priority;
+    const [taskUnderEdit, setTaskUnderEdit] = useContext(TaskContext);
+
+    const title = taskUnderEdit.title;
+    const description = taskUnderEdit.description;
+    const status = taskUnderEdit.status;
+    const priority =  taskUnderEdit.priority;
     
     const save = (e)=>{
         e.preventDefault();
         const formData = new FormData(e.target);
         console.log(formData);
-        taskUpdater(e);
     }
 
-
-
     return <>
-            <div className="card">
+            <div className="card border-0">
                 <div className="card-body">
-                    <form onSubmit={(e)=>{save(e)}} className="d-flex flex-column gap-2 align-items-start text-start">
+                    <form onSubmit={(e)=>{save(e)}} className="d-flex flex-column gap-3 align-items-start text-start">
                             <label className="w-100">
                                 <h6 className="card-title text-info-emphasis">Title</h6>
                                 <input className="w-100 card-text lead fs-6" type="text" defaultValue={title}></input>
@@ -52,8 +51,7 @@ const TaskCardEdit = (props)=>{
                                     <option value="completed"><span className="badge rounded-pill text-bg-danger">Completed</span></option>
                                 </select>
                             </label>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button  type="submit" className="task-card-icons ms-auto"><i class="bi bi-floppy-fill"></i></button>
+                            <button  type="submit" className=" text-info-emphasis task-card-icons ms-auto"><i class="bi bi-floppy-fill"></i> SAVE</button>
                        </form>
                 </div>
             </div>
