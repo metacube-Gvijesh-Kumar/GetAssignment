@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState,useRef} from "react";
 import './TaskCard.css'
 import TaskContext from "../TaskContext";
 import TasksContext from "../TasksContext";
@@ -16,6 +16,8 @@ const TaskCard = (props) => {
 
     const [taskUnderEdit, setTaskUnderEdit] = useContext(TaskContext);
     const [tasksDetails,setTasksDetails] = useContext(TasksContext);
+
+    const taskCardRef = useRef(null);
 
     let badgeStyle = 'badge rounded-pill ';
     if (priority === 'low')
@@ -46,13 +48,14 @@ const TaskCard = (props) => {
     bgMap.set('medium','rgb(247 247 200)');
     bgMap.set('high','rgb(240 208 208)');
 
-    const backGroundStyle ={
+    const backGroundStyle = {
         backgroundColor:bgMap.get(task.priority)
     }
 
+
     return <>
        
-                <div style={backGroundStyle} className="card">
+                <div ref={taskCardRef} style={backGroundStyle}  draggable={status=='completed'?false:true} className="card">
                     <div className="card-body text-start">
                         <h6 className="card-title text-info-emphasis">{title}</h6>
                         <p className="card-text lead fs-6">{open || description.length < 50 ? description : description.substring(0, 50) + '...'}</p>
