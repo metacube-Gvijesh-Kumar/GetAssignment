@@ -33,10 +33,23 @@ const TaskCard = (props) => {
         const newTaskList = tasksDetails.tasks.filter((t)=>t.id!=task.id);
         setTasksDetails({...tasksDetails,tasks: newTaskList});
     }
+    //rgb(213,212,212) grey
+    //rgb(240 208 208) red
+    //rgb(247 247 200) yellow
+    
+    const bgMap = new Map();
+
+    bgMap.set('low','rgb(213,212,212)');
+    bgMap.set('medium','rgb(247 247 200)');
+    bgMap.set('high','rgb(240 208 208)');
+
+    const backGroundStyle ={
+        backgroundColor:bgMap.get(task.priority)
+    }
 
     return <>
        
-                <div className="card">
+                <div style={backGroundStyle} className="card">
                     <div className="card-body text-start">
                         <h6 className="card-title text-info-emphasis">{title}</h6>
                         <p className="card-text lead fs-6">{open || description.length < 50 ? description : description.substring(0, 50) + '...'}</p>

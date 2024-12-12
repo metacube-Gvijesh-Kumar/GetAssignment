@@ -141,7 +141,6 @@ function App() {
   const completedTasks = tasksDetails.tasks.filter((task) => task.status == 'completed');
 
   
-
   return (
 
     <div className="App">
