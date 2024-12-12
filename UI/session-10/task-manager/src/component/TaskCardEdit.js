@@ -8,7 +8,7 @@ const TaskCardEdit = (props)=>{
     const [taskUnderEdit, setTaskUnderEdit] = useContext(TaskContext);
     const [tasksDetails,setTasksDetails] = useContext(TasksContext);
 
-    const {title,description,status,priority,id} = taskUnderEdit;
+    const {title,description,status,priority,id,creationDate,completionDate} = taskUnderEdit;
 
 
     const save = (e)=>{
@@ -17,19 +17,32 @@ const TaskCardEdit = (props)=>{
         setTaskUnderEdit({});
         const formData = new FormData(e.target);
         const taskToSave ={};
+
         for (let [key, value] of formData) {
             taskToSave[key]=value;
         }
+        
 
         const newTaskList = tasksDetails.tasks.filter((t)=>t.id!=id);
         let nextTaskId = tasksDetails.nextTaskId;
 
+
         if(!id){
+            taskToSave.creationDate= new Date().toDateString();
+
             newTaskList.push({...taskToSave,id:nextTaskId});
             nextTaskId++;
         }
-        else
+        else{
+            console.log("required status",taskToSave.status)
+
+            if(taskToSave.status=='completed')
+            taskToSave.completionDate = new Date().toDateString();
+
+            taskToSave.creationDate=creationDate;
+            
             newTaskList.push({...taskToSave,id:id});
+        }
 
         const newTaskDetails = {tasks:newTaskList,nextTaskId:nextTaskId};
         setTasksDetails(newTaskDetails);
